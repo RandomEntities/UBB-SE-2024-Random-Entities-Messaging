@@ -1,5 +1,4 @@
-﻿using MauiApp1.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -7,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using MauiApp1.Model;
 
 namespace MauiApp1.ViewModel
 {
@@ -20,7 +20,7 @@ namespace MauiApp1.ViewModel
         {
             this.service = service;
             this.userId = userId;
-            List<ContactLastMessage> contacts = service.GetContactLastMessages(userId, "");
+            List<ContactLastMessage> contacts = service.GetContactLastMessages(userId, string.Empty);
             Contacts = new ObservableCollection<ContactLastMessage>(contacts);
         }
 
@@ -38,7 +38,7 @@ namespace MauiApp1.ViewModel
         {
             if (searchText == null)
             {
-                searchText = "";
+                searchText = string.Empty;
             }
             RefreshContacts(searchText);
         }

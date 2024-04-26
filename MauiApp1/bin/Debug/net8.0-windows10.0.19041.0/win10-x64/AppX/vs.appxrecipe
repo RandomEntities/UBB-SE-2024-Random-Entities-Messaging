@@ -30,25 +30,25 @@
     <AppXManifest Include="D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-04-26T14:33:31.217</Modified>
+      <Modified>2024-04-26T15:30:19.241</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-04-26T14:32:45.099</Modified>
+      <Modified>2024-04-26T15:30:18.949</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MauiApp1.runtimeconfig.json">
       <PackagePath>MauiApp1.runtimeconfig.json</PackagePath>
-      <Modified>2024-04-26T13:31:40.709</Modified>
+      <Modified>2024-04-26T15:21:49.262</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MauiApp1.dll">
       <PackagePath>MauiApp1.dll</PackagePath>
-      <Modified>2024-04-26T14:33:30.707</Modified>
+      <Modified>2024-04-26T15:30:18.220</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>MauiApp1.exe</PackagePath>
-      <Modified>2024-04-26T14:33:30.712</Modified>
+      <Modified>2024-04-26T15:30:18.227</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
@@ -346,10 +346,6 @@
       <PackagePath>teo.scale-100.png</PackagePath>
       <Modified>2024-04-26T13:18:45.493</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MauiApp1.deps.json">
-      <PackagePath>MauiApp1.deps.json</PackagePath>
-      <Modified>2024-04-26T13:31:40.486</Modified>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\sandw\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.31\lib\net6.0\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>
       <Modified>2023-10-16T19:41:08.000</Modified>
@@ -629,6 +625,10 @@
     <AppxPackagedFile Include="C:\Users\sandw\.nuget\packages\microsoft.windowsappsdk\1.3.230724000\runtimes\win10-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
       <Modified>2023-04-28T12:58:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\MauiApp1.deps.json">
+      <PackagePath>MauiApp1.deps.json</PackagePath>
+      <Modified>2024-04-26T15:21:49.749</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\sandw\.nuget\packages\microsoft.maui.controls.compatibility\8.0.7\lib\net8.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

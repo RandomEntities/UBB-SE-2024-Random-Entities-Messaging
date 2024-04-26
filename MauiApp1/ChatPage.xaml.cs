@@ -7,21 +7,20 @@ public partial class ChatPage : ContentPage
 {
     private readonly ChatPageViewModel viewModel;
 
-    private int _chatId;
+    private int chatId;
     public int ChatId
     {
-        get => _chatId;
+        get => chatId;
         set
         {
-            _chatId = value;
-            viewModel.SetChatId(_chatId);
+            chatId = value;
+            viewModel.SetChatId(chatId);
         }
     }
 
     public ChatPage(ChatPageViewModel viewModel)
     {
         InitializeComponent();
-        
         this.viewModel = viewModel;
         this.BindingContext = viewModel;
     }
@@ -30,11 +29,6 @@ public partial class ChatPage : ContentPage
     {
         string route = "///MainPage";
         await Shell.Current.GoToAsync(route);
-    }
-
-    void OnCallClicked(object sender, EventArgs e)
-    {
-
     }
 
     private async void OnFileClicked(object sender, EventArgs e)
@@ -127,15 +121,10 @@ public partial class ChatPage : ContentPage
         }
     }
 
-    void OnMicrophoneReleased(object sender, EventArgs e)
-    {
-
-    }
-
-    void OnSendClicked(object sender, EventArgs e)
+    private void OnSendClicked(object sender, EventArgs e)
     {
         string text = this.MessageInput.Text;
         viewModel.AddTextMessageToChat(text);
-        this.MessageInput.Text = "";
+        this.MessageInput.Text = string.Empty;
     }
 }

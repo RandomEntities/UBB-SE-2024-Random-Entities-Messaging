@@ -19,7 +19,7 @@ namespace MauiApp1
                 return null;
             }
 
-            return message.incoming ? IncomingTemplate : OutgoingTemplate;
+            return message.Incoming ? IncomingTemplate : OutgoingTemplate;
         }
     }
 }

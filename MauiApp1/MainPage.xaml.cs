@@ -1,6 +1,6 @@
-﻿using MauiApp1.Model;
+﻿using System.Collections.ObjectModel;
+using MauiApp1.Model;
 using MauiApp1.ViewModel;
-using System.Collections.ObjectModel;
 
 namespace MauiApp1
 {
@@ -37,8 +37,7 @@ namespace MauiApp1
         {
             base.OnNavigatedTo(args);
 
-            viewModel.RefreshContacts("");
+            viewModel.RefreshContacts(string.Empty);
         }
     }
-
 }

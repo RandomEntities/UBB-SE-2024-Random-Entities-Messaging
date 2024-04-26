@@ -1,5 +1,4 @@
-﻿using MauiApp1.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -7,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using MauiApp1.Model;
 
 namespace MauiApp1.ViewModel
 {
@@ -18,29 +18,29 @@ namespace MauiApp1.ViewModel
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private string _contactName;
+        private string contactName;
         public string ContactName
         {
-            get => _contactName;
+            get => contactName;
             private set
             {
-                if (_contactName != value)
+                if (contactName != value)
                 {
-                    _contactName = value;
+                    contactName = value;
                     OnPropertyChanged();
                 }
             }
         }
 
-        private string _contactProfilePhotoPath;
+        private string contactProfilePhotoPath;
         public string ContactProfilePhotoPath
         {
-            get => _contactProfilePhotoPath;
+            get => contactProfilePhotoPath;
             private set
             {
-                if (value != _contactProfilePhotoPath)
+                if (value != contactProfilePhotoPath)
                 {
-                    _contactProfilePhotoPath = value;
+                    contactProfilePhotoPath = value;
                     OnPropertyChanged();
                 }
             }

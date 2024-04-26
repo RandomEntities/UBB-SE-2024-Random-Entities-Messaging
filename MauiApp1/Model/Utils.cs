@@ -13,7 +13,6 @@ namespace MauiApp1.Model
         public static List<User> ReadUsersFromXml(string filePath)
         {
             List<User> users = new List<User>();
-            
             try
             {
                 if (!File.Exists(filePath))
@@ -21,28 +20,19 @@ namespace MauiApp1.Model
                     Console.WriteLine($"File not found: {filePath}");
                     return users;
                 }
-
-
                 using (XmlReader reader = XmlReader.Create(filePath))
                 {
-
                     while (reader.Read())
                     {
-
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "User")
                         {
-
                             int userId = 0;
-                            string name = "";
-                            string profilePhotoPath = "";
-
-
+                            string name = string.Empty;
+                            string profilePhotoPath = string.Empty;
                             while (reader.Read())
                             {
-
                                 if (reader.NodeType == XmlNodeType.Element)
                                 {
-
                                     switch (reader.Name)
                                     {
                                         case "UserID":
@@ -56,11 +46,8 @@ namespace MauiApp1.Model
                                             break;
                                     }
                                 }
-
-
                                 if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "User")
                                 {
-
                                     users.Add(new User(userId, name, profilePhotoPath));
                                     break;
                                 }
@@ -79,44 +66,25 @@ namespace MauiApp1.Model
 
         public static void WriteUserToXml(User user, string filePath)
         {
-
             bool fileExists = File.Exists(filePath);
-
-
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
-
-
             using (XmlWriter writer = XmlWriter.Create(filePath, settings))
             {
-
                 if (!fileExists)
                 {
-
                     writer.WriteStartDocument();
-
-
                     writer.WriteStartElement("Users");
                 }
 
-
                 writer.WriteStartElement("User");
-
-
                 writer.WriteElementString("UserID", user.userId.ToString());
                 writer.WriteElementString("Name", user.name);
                 writer.WriteElementString("ProfilePhotoPath", user.profilePhotoPath);
-
-
                 writer.WriteEndElement();
-
-
                 if (!fileExists)
                 {
-
                     writer.WriteEndElement();
-
-
                     writer.WriteEndDocument();
                 }
             }
@@ -126,24 +94,14 @@ namespace MauiApp1.Model
 
         public static void WriteUserToXmlAppending(User user, string filePath)
         {
-
             List<User> existingUsers = ReadUsersFromXml(filePath);
-
-
             existingUsers.Add(user);
-
-
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
-
-
             using (XmlWriter writer = XmlWriter.Create(filePath, settings))
             {
-
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Users");
-
-
                 foreach (User u in existingUsers)
                 {
                     writer.WriteStartElement("User");
@@ -152,8 +110,6 @@ namespace MauiApp1.Model
                     writer.WriteElementString("ProfilePhotoPath", u.profilePhotoPath);
                     writer.WriteEndElement();
                 }
-
-
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }
@@ -162,7 +118,6 @@ namespace MauiApp1.Model
         public static List<Chat> ReadChatsFromXml(string filePath)
         {
             List<Chat> chats = new List<Chat>();
-            
             try
             {
                 if (!File.Exists(filePath))
@@ -181,8 +136,6 @@ namespace MauiApp1.Model
                             int senderId = 0;
                             int receiverId = 0;
                             List<Message> messages = new List<Message>();
-
-
                             while (reader.Read())
                             {
                                 if (reader.NodeType == XmlNodeType.Element)
@@ -235,7 +188,7 @@ namespace MauiApp1.Model
                 {
                     int messageId = 0, chatId = 0, senderId = 0;
                     DateTime timestamp = DateTime.MinValue;
-                    string content = "", status = "", type = ""; // Added type field
+                    string content = string.Empty, status = string.Empty, type = string.Empty; // Added type field
 
                     while (reader.Read())
                     {
@@ -269,9 +222,8 @@ namespace MauiApp1.Model
 
                         if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Message")
                         {
-                            //messages.Add(new Message(messageId, chatId, senderId, timestamp, content, status, type)); // Pass type to Message constructor
-                            //break;
-
+                            // messages.Add(new Message(messageId, chatId, senderId, timestamp, content, status, type)); // Pass type to Message constructor
+                            // break;
                             Message message;
                             switch (type)
                             {
@@ -299,11 +251,10 @@ namespace MauiApp1.Model
                             }
                             messages.Add(message);
                             break;
-
-
                         }
                     }
-                } while (reader.ReadToNextSibling("Message"));
+                }
+                while (reader.ReadToNextSibling("Message"));
             }
 
             return messages;
@@ -372,7 +323,7 @@ namespace MauiApp1.Model
                             writer.WriteElementString("Type", "file");
                         }
 
-                        //writer.WriteElementString("Type", m.Type);
+                        // writer.WriteElementString("Type", m.Type);
                         writer.WriteEndElement(); // Message
                     }
 

@@ -259,9 +259,6 @@
     <AppxPackagedFile Include="D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\teo.scale-100.png">
       <PackagePath>teo.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MauiApp1.deps.json">
-      <PackagePath>MauiApp1.deps.json</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\sandw\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.31\lib\net6.0\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>
     </AppxPackagedFile>
@@ -471,6 +468,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\sandw\.nuget\packages\microsoft.windowsappsdk\1.3.230724000\runtimes\win10-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\MauiApp1.deps.json">
+      <PackagePath>MauiApp1.deps.json</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\sandw\.nuget\packages\microsoft.maui.controls.compatibility\8.0.7\lib\net8.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

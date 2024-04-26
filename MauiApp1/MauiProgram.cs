@@ -1,7 +1,7 @@
-﻿using MauiApp1.Model;
+﻿using System.Reflection;
+using MauiApp1.Model;
 using MauiApp1.ViewModel;
 using Microsoft.Extensions.Logging;
-using System.Reflection;
 
 namespace MauiApp1
 {
