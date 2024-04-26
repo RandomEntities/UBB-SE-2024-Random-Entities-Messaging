@@ -1,6 +1,7 @@
 ﻿using MauiApp1.Model;
 using MauiApp1.ViewModel;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
 
 namespace MauiApp1
 {
@@ -21,9 +22,9 @@ namespace MauiApp1
 
             builder.Services.AddSingleton<Repository>(serviceProvider =>
             {
-                string localPath = @"D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\";
-                string usersFilePath = localPath + @"MauiApp1\Data\users.xml";
-                string chatsFilePath = localPath + @"MauiApp1\Data\chats.xml";
+                string localPath = (Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+                string usersFilePath = localPath + @"\Data\users.xml";
+                string chatsFilePath = localPath + @"\Data\chats.xml";
                 return new Repository(usersFilePath, chatsFilePath);
             });
 

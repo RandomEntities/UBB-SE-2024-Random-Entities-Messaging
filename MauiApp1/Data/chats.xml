@@ -6,19 +6,10 @@
     <ReceiverId>2</ReceiverId>
     <Messages>
       <Message>
-        <MessageId>1</MessageId>
-        <ChatId>1</ChatId>
-        <SenderId>1</SenderId>
-        <Timestamp>04.03.2024 11:03:58</Timestamp>
-        <Content>Hello!</Content>
-        <Status>Seen</Status>
-        <Type>text</Type>
-      </Message>
-      <Message>
         <MessageId>2</MessageId>
         <ChatId>1</ChatId>
         <SenderId>2</SenderId>
-        <Timestamp>10.03.2024 12:03:58</Timestamp>
+        <Timestamp>3/10/2024 12:03:58 PM</Timestamp>
         <Content>Hei, friend!</Content>
         <Status>Seen</Status>
         <Type>text</Type>
@@ -27,16 +18,25 @@
         <MessageId>3</MessageId>
         <ChatId>1</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>10.03.2024 12:03:58</Timestamp>
+        <Timestamp>3/10/2024 12:03:58 PM</Timestamp>
         <Content>What are you doing?</Content>
         <Status>Received</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>1</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/3/2024 11:03:58 AM</Timestamp>
+        <Content>Hello!</Content>
+        <Status>Seen</Status>
         <Type>text</Type>
       </Message>
       <Message>
         <MessageId>4</MessageId>
         <ChatId>1</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:16:21</Timestamp>
+        <Timestamp>4/14/2024 8:16:21 PM</Timestamp>
         <Content>Hey, how are you?</Content>
         <Status>Sent</Status>
         <Type>text</Type>
@@ -45,7 +45,7 @@
         <MessageId>5</MessageId>
         <ChatId>1</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:16:30</Timestamp>
+        <Timestamp>4/14/2024 8:16:30 PM</Timestamp>
         <Content>D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\MauiApp1\Data\Photos\photo3.jpg</Content>
         <Status>Sent</Status>
         <Type>text</Type>
@@ -54,7 +54,7 @@
         <MessageId>6</MessageId>
         <ChatId>1</ChatId>
         <SenderId>2</SenderId>
-        <Timestamp>14.04.2024 20:17:25</Timestamp>
+        <Timestamp>4/14/2024 8:17:25 PM</Timestamp>
         <Content>I'm fine</Content>
         <Status>New</Status>
         <Type>text</Type>
@@ -67,19 +67,10 @@
     <ReceiverId>1</ReceiverId>
     <Messages>
       <Message>
-        <MessageId>1</MessageId>
-        <ChatId>1</ChatId>
-        <SenderId>1</SenderId>
-        <Timestamp>04.03.2024 11:03:58</Timestamp>
-        <Content>Hello!</Content>
-        <Status>Seen</Status>
-        <Type>text</Type>
-      </Message>
-      <Message>
         <MessageId>2</MessageId>
         <ChatId>1</ChatId>
         <SenderId>2</SenderId>
-        <Timestamp>10.03.2024 12:03:58</Timestamp>
+        <Timestamp>3/10/2024 12:03:58 PM</Timestamp>
         <Content>Hei, friend!</Content>
         <Status>Seen</Status>
         <Type>text</Type>
@@ -88,16 +79,25 @@
         <MessageId>3</MessageId>
         <ChatId>1</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>10.03.2024 12:03:58</Timestamp>
+        <Timestamp>3/10/2024 12:03:58 PM</Timestamp>
         <Content>What are you doing?</Content>
         <Status>Received</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>1</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/3/2024 11:03:58 AM</Timestamp>
+        <Content>Hello!</Content>
+        <Status>Seen</Status>
         <Type>text</Type>
       </Message>
       <Message>
         <MessageId>4</MessageId>
         <ChatId>2</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:16:21</Timestamp>
+        <Timestamp>4/14/2024 8:16:21 PM</Timestamp>
         <Content>Hey, how are you?</Content>
         <Status>New</Status>
         <Type>text</Type>
@@ -106,7 +106,7 @@
         <MessageId>5</MessageId>
         <ChatId>2</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:16:30</Timestamp>
+        <Timestamp>4/14/2024 8:16:30 PM</Timestamp>
         <Content>D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\MauiApp1\Data\Photos\photo3.jpg</Content>
         <Status>New</Status>
         <Type>text</Type>
@@ -115,7 +115,7 @@
         <MessageId>6</MessageId>
         <ChatId>2</ChatId>
         <SenderId>2</SenderId>
-        <Timestamp>14.04.2024 20:17:25</Timestamp>
+        <Timestamp>4/14/2024 8:17:25 PM</Timestamp>
         <Content>I'm fine</Content>
         <Status>Sent</Status>
         <Type>text</Type>
@@ -131,7 +131,7 @@
         <MessageId>1</MessageId>
         <ChatId>2</ChatId>
         <SenderId>3</SenderId>
-        <Timestamp>01.02.2024 11:04:23</Timestamp>
+        <Timestamp>1/2/2024 11:04:23 AM</Timestamp>
         <Content>You didn't call back...</Content>
         <Status>Receieved</Status>
         <Type>text</Type>
@@ -140,7 +140,7 @@
         <MessageId>2</MessageId>
         <ChatId>1</ChatId>
         <SenderId>3</SenderId>
-        <Timestamp>03.02.2024 10:04:23</Timestamp>
+        <Timestamp>3/2/2024 10:04:23 AM</Timestamp>
         <Content>Ok so you just ignore me</Content>
         <Status>New</Status>
         <Type>text</Type>
@@ -149,7 +149,7 @@
         <MessageId>3</MessageId>
         <ChatId>3</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:26:19</Timestamp>
+        <Timestamp>4/14/2024 8:26:19 PM</Timestamp>
         <Content>Hey, how are you?</Content>
         <Status>Sent</Status>
         <Type>text</Type>
@@ -158,7 +158,7 @@
         <MessageId>4</MessageId>
         <ChatId>3</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:26:32</Timestamp>
+        <Timestamp>4/14/2024 8:26:32 PM</Timestamp>
         <Content>D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\MauiApp1\Data\Photos\photo3.jpg</Content>
         <Status>Sent</Status>
         <Type>text</Type>
@@ -174,7 +174,7 @@
         <MessageId>1</MessageId>
         <ChatId>2</ChatId>
         <SenderId>3</SenderId>
-        <Timestamp>01.02.2024 11:04:23</Timestamp>
+        <Timestamp>1/2/2024 11:04:23 AM</Timestamp>
         <Content>You didn't call back...</Content>
         <Status>Receieved</Status>
         <Type>text</Type>
@@ -183,7 +183,7 @@
         <MessageId>2</MessageId>
         <ChatId>1</ChatId>
         <SenderId>3</SenderId>
-        <Timestamp>03.02.2024 10:04:23</Timestamp>
+        <Timestamp>3/2/2024 10:04:23 AM</Timestamp>
         <Content>Ok so you just ignore me</Content>
         <Status>New</Status>
         <Type>text</Type>
@@ -192,7 +192,7 @@
         <MessageId>3</MessageId>
         <ChatId>4</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:26:19</Timestamp>
+        <Timestamp>4/14/2024 8:26:19 PM</Timestamp>
         <Content>Hey, how are you?</Content>
         <Status>New</Status>
         <Type>text</Type>
@@ -201,10 +201,10 @@
         <MessageId>4</MessageId>
         <ChatId>4</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:26:32</Timestamp>
+        <Timestamp>4/14/2024 8:26:32 PM</Timestamp>
         <Content>D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\MauiApp1\Data\Photos\photo3.jpg</Content>
         <Status>New</Status>
-        <Type>text</Type>
+        <Type>photo</Type>
       </Message>
     </Messages>
   </Chat>
@@ -217,7 +217,7 @@
         <MessageId>1</MessageId>
         <ChatId>3</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>01.02.2024 12:05:01</Timestamp>
+        <Timestamp>1/2/2024 12:05:01 PM</Timestamp>
         <Content>Hello! I need those many back</Content>
         <Status>Seen</Status>
         <Type>text</Type>
@@ -226,7 +226,7 @@
         <MessageId>2</MessageId>
         <ChatId>3</ChatId>
         <SenderId>4</SenderId>
-        <Timestamp>02.02.2024 10:05:09</Timestamp>
+        <Timestamp>2/2/2024 10:05:09 AM</Timestamp>
         <Content>In a minute</Content>
         <Status>Seen</Status>
         <Type>text</Type>
@@ -235,7 +235,7 @@
         <MessageId>3</MessageId>
         <ChatId>3</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>04.03.2024 02:05:01</Timestamp>
+        <Timestamp>4/3/2024 2:05:01 AM</Timestamp>
         <Content>IT'S BEEN A WHILE</Content>
         <Status>Received</Status>
         <Type>text</Type>
@@ -244,7 +244,7 @@
         <MessageId>4</MessageId>
         <ChatId>5</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:21:10</Timestamp>
+        <Timestamp>4/14/2024 8:21:10 PM</Timestamp>
         <Content>Hey, how are you?</Content>
         <Status>Sent</Status>
         <Type>text</Type>
@@ -253,8 +253,8 @@
         <MessageId>5</MessageId>
         <ChatId>5</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:21:22</Timestamp>
-        <Content>D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\MauiApp1\Data\Photos\photo3.jpg</Content>
+        <Timestamp>4/14/2024 8:21:22 PM</Timestamp>
+        <Content>D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\Data\Photos\photo3.jpg</Content>
         <Status>Sent</Status>
         <Type>text</Type>
       </Message>
@@ -262,7 +262,7 @@
         <MessageId>6</MessageId>
         <ChatId>5</ChatId>
         <SenderId>4</SenderId>
-        <Timestamp>14.04.2024 20:22:05</Timestamp>
+        <Timestamp>4/14/2024 8:22:05 PM</Timestamp>
         <Content>I'm fine, what about you?</Content>
         <Status>New</Status>
         <Type>text</Type>
@@ -278,7 +278,7 @@
         <MessageId>1</MessageId>
         <ChatId>3</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>01.02.2024 12:05:01</Timestamp>
+        <Timestamp>1/2/2024 12:05:01 PM</Timestamp>
         <Content>Hello! I need those many back</Content>
         <Status>Seen</Status>
         <Type>text</Type>
@@ -287,7 +287,7 @@
         <MessageId>2</MessageId>
         <ChatId>3</ChatId>
         <SenderId>4</SenderId>
-        <Timestamp>02.02.2024 10:05:09</Timestamp>
+        <Timestamp>2/2/2024 10:05:09 AM</Timestamp>
         <Content>In a minute</Content>
         <Status>Seen</Status>
         <Type>text</Type>
@@ -296,7 +296,7 @@
         <MessageId>3</MessageId>
         <ChatId>3</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>04.03.2024 02:05:01</Timestamp>
+        <Timestamp>4/3/2024 2:05:01 AM</Timestamp>
         <Content>IT'S BEEN A WHILE</Content>
         <Status>Received</Status>
         <Type>text</Type>
@@ -305,7 +305,7 @@
         <MessageId>4</MessageId>
         <ChatId>6</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:21:10</Timestamp>
+        <Timestamp>4/14/2024 8:21:10 PM</Timestamp>
         <Content>Hey, how are you?</Content>
         <Status>New</Status>
         <Type>text</Type>
@@ -314,7 +314,7 @@
         <MessageId>5</MessageId>
         <ChatId>6</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:21:22</Timestamp>
+        <Timestamp>4/14/2024 8:21:22 PM</Timestamp>
         <Content>D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\MauiApp1\Data\Photos\photo3.jpg</Content>
         <Status>New</Status>
         <Type>text</Type>
@@ -323,7 +323,7 @@
         <MessageId>6</MessageId>
         <ChatId>6</ChatId>
         <SenderId>4</SenderId>
-        <Timestamp>14.04.2024 20:22:05</Timestamp>
+        <Timestamp>4/14/2024 8:22:05 PM</Timestamp>
         <Content>I'm fine, what about you?</Content>
         <Status>Sent</Status>
         <Type>text</Type>
@@ -339,7 +339,7 @@
         <MessageId>1</MessageId>
         <ChatId>4</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>03.02.2024 16:03:00</Timestamp>
+        <Timestamp>3/2/2024 4:03:00 PM</Timestamp>
         <Content>I have bad news for you</Content>
         <Status>Sent</Status>
         <Type>text</Type>
@@ -348,7 +348,7 @@
         <MessageId>2</MessageId>
         <ChatId>4</ChatId>
         <SenderId>5</SenderId>
-        <Timestamp>03.02.2024 16:05:22</Timestamp>
+        <Timestamp>3/2/2024 4:05:22 PM</Timestamp>
         <Content>What?? What's wrong?</Content>
         <Status>Seen</Status>
         <Type>text</Type>
@@ -357,7 +357,7 @@
         <MessageId>3</MessageId>
         <ChatId>4</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>03.02.2024 16:10:22</Timestamp>
+        <Timestamp>3/2/2024 4:10:22 PM</Timestamp>
         <Content>I'm going to visit you on Sundaaay</Content>
         <Status>Seen</Status>
         <Type>text</Type>
@@ -366,7 +366,7 @@
         <MessageId>4</MessageId>
         <ChatId>7</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:14:30</Timestamp>
+        <Timestamp>4/14/2024 8:14:30 PM</Timestamp>
         <Content>Hey, how are you?</Content>
         <Status>Sent</Status>
         <Type>text</Type>
@@ -382,7 +382,7 @@
         <MessageId>1</MessageId>
         <ChatId>4</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>03.02.2024 16:03:00</Timestamp>
+        <Timestamp>3/2/2024 4:03:00 PM</Timestamp>
         <Content>I have bad news for you</Content>
         <Status>Sent</Status>
         <Type>text</Type>
@@ -391,7 +391,7 @@
         <MessageId>2</MessageId>
         <ChatId>4</ChatId>
         <SenderId>5</SenderId>
-        <Timestamp>03.02.2024 16:05:22</Timestamp>
+        <Timestamp>3/2/2024 4:05:22 PM</Timestamp>
         <Content>What?? What's wrong?</Content>
         <Status>Seen</Status>
         <Type>text</Type>
@@ -400,7 +400,7 @@
         <MessageId>3</MessageId>
         <ChatId>4</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>03.02.2024 16:10:22</Timestamp>
+        <Timestamp>3/2/2024 4:10:22 PM</Timestamp>
         <Content>I'm going to visit you on Sundaaay</Content>
         <Status>Seen</Status>
         <Type>text</Type>
@@ -409,7 +409,7 @@
         <MessageId>4</MessageId>
         <ChatId>8</ChatId>
         <SenderId>1</SenderId>
-        <Timestamp>14.04.2024 20:14:30</Timestamp>
+        <Timestamp>4/14/2024 8:14:30 PM</Timestamp>
         <Content>Hey, how are you?</Content>
         <Status>New</Status>
         <Type>text</Type>
