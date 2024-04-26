@@ -23,8 +23,8 @@ namespace MauiApp1.Model
 
         private void SortChatMessages(Chat chat)
         {
-            List<Message> sortedMessages = chat.getAllMessages().OrderBy(message => message.GetTimestamp()).ToList();
-            chat.setMessageList(sortedMessages);
+            List<Message> sortedMessages = chat.GetAllMessages().OrderBy(message => message.GetTimestamp()).ToList();
+            chat.SetMessageList(sortedMessages);
         }
 
         private void LoadUsersAndChats()
@@ -47,7 +47,7 @@ namespace MauiApp1.Model
             List<Chat> chats = new List<Chat>();
             foreach (Chat chat in allChats)
             {
-                if (chat.senderId == userId)
+                if (chat.SenderId == userId)
                 {
                     chats.Add(chat);
                 }
@@ -58,25 +58,31 @@ namespace MauiApp1.Model
 
         public User? GetUser(int userId)
         {
-            return allUsers.Find(user => user.userId == userId);
+            return allUsers.Find(user => user.UserId == userId);
         }
 
         public Chat? GetChat(int chatId)
         {
-            return allChats.Find(chat => chat.chatId == chatId);
+            return allChats.Find(chat => chat.ChatId == chatId);
         }
 
         public void AddMessageToChat(int chatId, Message message)
         {
             Chat? chat = GetChat(chatId);
-            if (chat == null) { return; }
+            if (chat == null)
+            {
+                return;
+            }
 
             int oppositeChatId = (chatId % 2 == 0 ? chatId - 1 : chatId + 1);
             Chat? oppositeChat = GetChat(oppositeChatId);
-            if (oppositeChat == null) { return; }
+            if (oppositeChat == null)
+            {
+                return;
+            }
 
             int lastId = 0;
-            foreach (Message m in chat.getAllMessages())
+            foreach (Message m in chat.GetAllMessages())
             {
                 int mId = m.GetMessageId();
                 if (mId > lastId)
@@ -111,8 +117,8 @@ namespace MauiApp1.Model
                 message2 = new PhotoMessage(lastId + 1, oppositeChatId, message.GetSenderId(), message.GetTimestamp(), "New", message.GetMessage());
             }
 
-            chat.addMessage(message);
-            oppositeChat.addMessage(message2);
+            chat.AddMessage(message);
+            oppositeChat.AddMessage(message2);
             SortChatMessages(chat);
             SortChatMessages(oppositeChat);
 

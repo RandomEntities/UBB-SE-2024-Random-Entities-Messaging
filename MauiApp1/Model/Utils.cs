@@ -78,9 +78,9 @@ namespace MauiApp1.Model
                 }
 
                 writer.WriteStartElement("User");
-                writer.WriteElementString("UserID", user.userId.ToString());
-                writer.WriteElementString("Name", user.name);
-                writer.WriteElementString("ProfilePhotoPath", user.profilePhotoPath);
+                writer.WriteElementString("UserID", user.UserId.ToString());
+                writer.WriteElementString("Name", user.Name);
+                writer.WriteElementString("ProfilePhotoPath", user.ProfilePhotoPath);
                 writer.WriteEndElement();
                 if (!fileExists)
                 {
@@ -105,9 +105,9 @@ namespace MauiApp1.Model
                 foreach (User u in existingUsers)
                 {
                     writer.WriteStartElement("User");
-                    writer.WriteElementString("UserID", u.userId.ToString());
-                    writer.WriteElementString("Name", u.name);
-                    writer.WriteElementString("ProfilePhotoPath", u.profilePhotoPath);
+                    writer.WriteElementString("UserID", u.UserId.ToString());
+                    writer.WriteElementString("Name", u.Name);
+                    writer.WriteElementString("ProfilePhotoPath", u.ProfilePhotoPath);
                     writer.WriteEndElement();
                 }
                 writer.WriteEndElement();
@@ -161,7 +161,7 @@ namespace MauiApp1.Model
                                 if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Chat")
                                 {
                                     Chat c1 = new Chat(chatId, senderId, receiverId);
-                                    c1.setMessageList(messages);
+                                    c1.SetMessageList(messages);
                                     chats.Add(c1);
                                     break;
                                 }
@@ -282,13 +282,13 @@ namespace MauiApp1.Model
                 foreach (Chat c in chats)
                 {
                     writer.WriteStartElement("Chat");
-                    writer.WriteElementString("ChatId", c.chatId.ToString());
-                    writer.WriteElementString("SenderId", c.senderId.ToString());
-                    writer.WriteElementString("ReceiverId", c.receiverId.ToString());
+                    writer.WriteElementString("ChatId", c.ChatId.ToString());
+                    writer.WriteElementString("SenderId", c.SenderId.ToString());
+                    writer.WriteElementString("ReceiverId", c.ReceiverId.ToString());
 
                     writer.WriteStartElement("Messages");
 
-                    foreach (Message m in c.getAllMessages())
+                    foreach (Message m in c.GetAllMessages())
                     {
                         writer.WriteStartElement("Message");
                         writer.WriteElementString("MessageId", m.GetMessageId().ToString());

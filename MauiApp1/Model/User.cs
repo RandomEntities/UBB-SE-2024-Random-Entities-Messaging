@@ -7,22 +7,19 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Xml;
 
-
 namespace MauiApp1.Model
 {
     public class User
     {
-
-        public int userId { get; }
-        public string name { get; }
-        public string profilePhotoPath { get; }
-
+        public int UserId { get; }
+        public string Name { get; }
+        public string ProfilePhotoPath { get; }
 
         public User(int userId, string name, string profilePhotoPath)
         {
-            this.userId = userId;
-            this.name = name;
-            this.profilePhotoPath = profilePhotoPath;
+            this.UserId = userId;
+            this.Name = name;
+            this.ProfilePhotoPath = profilePhotoPath;
         }
     }
 }

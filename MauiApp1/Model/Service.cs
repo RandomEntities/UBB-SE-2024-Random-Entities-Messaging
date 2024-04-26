@@ -1,10 +1,10 @@
-﻿using MauiApp1.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MauiApp1.ViewModel;
 
 namespace MauiApp1.Model
 {
@@ -19,7 +19,7 @@ namespace MauiApp1.Model
 
         private List<Chat> GetChatsSortedByLastMessageTimeStamp(int userId)
         {
-            return repo.GetChatsByUser(userId).OrderByDescending(chat => chat.getLastMessage().GetTimestamp()).ToList();
+            return repo.GetChatsByUser(userId).OrderByDescending(chat => chat.GetLastMessage().GetTimestamp()).ToList();
         }
 
         private List<Chat> FilterChatsByName(int userId, string name)
@@ -35,13 +35,13 @@ namespace MauiApp1.Model
             List<Chat> matchingChats = new List<Chat>();
             foreach (Chat chat in chats)
             {
-                User? u = repo.GetUser(chat.receiverId);
-                if(u == null)
+                User? u = repo.GetUser(chat.ReceiverId);
+                if (u == null)
                 {
                     continue;
                 }
 
-                string userName = u.name.ToLower();
+                string userName = u.Name.ToLower();
                 if (userName.Contains(name))
                 {
                     matchingChats.Add(chat);
@@ -58,13 +58,13 @@ namespace MauiApp1.Model
             List<Chat> chats = this.FilterChatsByName(userId, name);
             foreach (Chat chat in chats)
             {
-                User? u = repo.GetUser(chat.receiverId);
+                User? u = repo.GetUser(chat.ReceiverId);
                 if (u == null)
                 {
                     continue;
                 }
 
-                Message m = chat.getLastMessage();
+                Message m = chat.GetLastMessage();
                 string msg = m.GetMessage();
                 if (m.GetSenderId() == userId)
                 {
@@ -79,7 +79,7 @@ namespace MauiApp1.Model
                 string time = Utils.ToStringWithLeadingZero(dt.Day) + "." + Utils.ToStringWithLeadingZero(dt.Month) + "\n";
                 time = time + Utils.ToStringWithLeadingZero(dt.Hour) + ":" + Utils.ToStringWithLeadingZero(dt.Minute);
 
-                ContactLastMessage clm = new ContactLastMessage(u.name, u.profilePhotoPath, msg, time, m.GetStatus(), chat.chatId);
+                ContactLastMessage clm = new ContactLastMessage(u.Name, u.ProfilePhotoPath, msg, time, m.GetStatus(), chat.ChatId);
                 result.Add(clm);
             }
 
@@ -89,23 +89,35 @@ namespace MauiApp1.Model
         public string GetContactName(int chatId)
         {
             Chat? chat = repo.GetChat(chatId);
-            if (chat ==  null) { return "";  }
+            if (chat == null)
+            {
+                return string.Empty;
+            }
 
-            User? contact = repo.GetUser(chat.receiverId);
-            if (contact == null) { return "";  }
+            User? contact = repo.GetUser(chat.ReceiverId);
+            if (contact == null)
+            {
+                return string.Empty;
+            }
 
-            return contact.name;
+            return contact.Name;
         }
 
         public string GetContactProfilePhotoPath(int chatId)
         {
             Chat? chat = repo.GetChat(chatId);
-            if (chat == null) { return ""; }
+            if (chat == null)
+            {
+                return string.Empty;
+            }
 
-            User? contact = repo.GetUser(chat.receiverId);
-            if (contact == null) { return ""; }
+            User? contact = repo.GetUser(chat.ReceiverId);
+            if (contact == null)
+            {
+                return string.Empty;
+            }
 
-            return contact.profilePhotoPath;
+            return contact.ProfilePhotoPath;
         }
 
         public List<MessageModel> GetChatMessages(int chatId)
@@ -113,13 +125,17 @@ namespace MauiApp1.Model
             List<MessageModel> result = new List<MessageModel>();
 
             Chat? chat = repo.GetChat(chatId);
-            if (chat == null) { return result; }
+            if (chat == null)
+            {
+                return result;
+            }
 
-            List<Message> messages = chat.getAllMessages();
-            foreach (Message m in messages) {
+            List<Message> messages = chat.GetAllMessages();
+            foreach (Message m in messages)
+            {
                 if (m is Message)
                 {
-                    bool incoming = (m.GetSenderId() == chat.receiverId);
+                    bool incoming = (m.GetSenderId() == chat.ReceiverId);
                     MessageModel model = new MessageModel("text", incoming, m.GetMessage());
                     result.Add(model);
                 }
@@ -130,7 +146,7 @@ namespace MauiApp1.Model
 
         public void AddTextMessageToChat(int chatId, int senderId, string text)
         {
-            Message message = new TextMessage(0, chatId, senderId, DateTime.Now, "", text);
+            Message message = new TextMessage(0, chatId, senderId, DateTime.Now, string.Empty, text);
             repo.AddMessageToChat(chatId, message);
         }
     }

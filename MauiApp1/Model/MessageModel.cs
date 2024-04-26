@@ -9,7 +9,7 @@ namespace MauiApp1.Model
     public class MessageModel
     {
         private string type;
-        public bool Incoming { get; private set; }// true - incoming, false - outgoing
+        public bool Incoming { get; private set; } // true - incoming, false - outgoing
         public string Text { get; }
 
         public MessageModel(string type, bool incoming, string text)

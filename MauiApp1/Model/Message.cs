@@ -25,12 +25,33 @@ namespace MauiApp1.Model
 
         public abstract string GetMessage();
 
-        public int GetMessageId() { return messageId; }
-        public void SetMessageId(int messageId) { this.messageId = messageId;}
-        public int GetChatId() { return chatId; }
-        public int GetSenderId() { return senderId; }
-        public DateTime GetTimestamp() { return timestamp; }
-        public string GetStatus() { return status; }
-        public void SetStatus(string status) {  this.status = status;}
+        public int GetMessageId()
+        {
+            return messageId;
+        }
+        public void SetMessageId(int messageId)
+        {
+            this.messageId = messageId;
+        }
+        public int GetChatId()
+        {
+            return chatId;
+        }
+        public int GetSenderId()
+        {
+            return senderId;
+        }
+        public DateTime GetTimestamp()
+        {
+            return timestamp;
+        }
+        public string GetStatus()
+        {
+            return status;
+        }
+        public void SetStatus(string status)
+        {
+            this.status = status;
+        }
     }
 }
