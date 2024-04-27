@@ -22,7 +22,7 @@ namespace MauiApp1
 
             builder.Services.AddSingleton<Repository>(serviceProvider =>
             {
-                string localPath = (Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+                string localPath = Directory.GetParent(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)).Parent.Parent.Parent.Parent.FullName;
                 string usersFilePath = localPath + @"\Data\users.xml";
                 string chatsFilePath = localPath + @"\Data\chats.xml";
                 return new Repository(usersFilePath, chatsFilePath);
