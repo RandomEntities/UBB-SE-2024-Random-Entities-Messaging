@@ -13,7 +13,7 @@ namespace MauiApp1.ViewModel
     public class ChatPageViewModel : INotifyPropertyChanged
     {
         private int userId;
-        private readonly Service service;
+        private readonly IService service;
         private int chatId;
 
         public event PropertyChangedEventHandler? PropertyChanged;
