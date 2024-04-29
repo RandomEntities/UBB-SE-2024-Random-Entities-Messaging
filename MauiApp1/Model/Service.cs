@@ -8,9 +8,9 @@ using MauiApp1.ViewModel;
 
 namespace MauiApp1.Model
 {
-    public class Service
+    public class Service : IService
     {
-        private Repository repo;
+        private IRepository repo;
 
         public Service(Repository repo)
         {

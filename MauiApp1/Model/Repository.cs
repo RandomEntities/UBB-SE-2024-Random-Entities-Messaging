@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace MauiApp1.Model
 {
-    public class Repository
+    public class Repository : IRepository
     {
         private string usersFilePath;
         private string chatsFilePath;

@@ -13,7 +13,7 @@ namespace MauiApp1.ViewModel
     public class MainPageViewModel
     {
         private int userId;
-        private readonly Service service;
+        private readonly IService service;
         public ObservableCollection<ContactLastMessage> Contacts { get; private set; }
 
         public MainPageViewModel(Service service, int userId)

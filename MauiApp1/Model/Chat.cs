@@ -13,7 +13,7 @@ namespace MauiApp1.Model
         public int SenderId { get; private set; }
         public int ReceiverId { get; private set; }
 
-        public List<Message> MessageList = new List<Message>();
+        private List<Message> messageList = new List<Message>();
 
         public Chat(int chatId, int senderId, int receiverId)
         {
@@ -24,22 +24,22 @@ namespace MauiApp1.Model
 
         public void AddMessage(Message newMessage)
         {
-            this.MessageList.Add(newMessage);
+            this.messageList.Add(newMessage);
         }
 
         public Message GetLastMessage()
         {
-            return this.MessageList.Last();
+            return this.messageList.Last();
         }
 
         public void SetMessageList(List<Message> newMessageList)
         {
-            this.MessageList = newMessageList;
+            this.messageList = newMessageList;
         }
 
         public List<Message> GetAllMessages()
         {
-            return this.MessageList;
+            return this.messageList;
         }
     }
 }
