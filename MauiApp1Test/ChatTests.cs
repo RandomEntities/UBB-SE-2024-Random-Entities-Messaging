@@ -11,7 +11,7 @@ namespace MauiApp1Test
     public class ChatTests
     {
         [Test]
-        public void AddMessage_AddsMessageToList()
+        public void AddMessage_LocallyInstantiatedChat_AddsMessageToList()
         {
             // Arrange
             var chat = new Chat(1, 101, 102);
@@ -26,7 +26,7 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void GetLastMessage_ReturnsLastMessage()
+        public void GetLastMessage_LocallyInstantiatedChat_ReturnsLastMessage()
         {
             // Arrange
             var chat = new Chat(1, 101, 102);
@@ -43,15 +43,15 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void SetMessageList_SetsMessageList()
+        public void SetMessageList_LocallyInstantiatedChat_SetsMessageList()
         {
             // Arrange
             var chat = new Chat(1, 101, 102);
             var newMessageList = new List<Message>
-        {
+            {
             new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hello"),
             new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hi")
-        };
+            };
 
             // Act
             chat.SetMessageList(newMessageList);
@@ -61,7 +61,7 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void GetAllMessages_ReturnsAllMessages()
+        public void GetAllMessages_LocallyInstantiatedChat_ReturnsAllMessages()
         {
             // Arrange
             var chat = new Chat(1, 101, 102);
