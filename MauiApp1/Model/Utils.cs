@@ -206,7 +206,7 @@ namespace MauiApp1.Model
                                     senderId = int.Parse(reader.ReadElementContentAsString());
                                     break;
                                 case "Timestamp":
-                                    timestamp = DateTime.ParseExact(reader.ReadElementContentAsString(), "MM/dd/yyyy hh:mm:ss tt", System.Globalization.CultureInfo.InvariantCulture);
+                                    timestamp = DateTime.ParseExact(reader.ReadElementContentAsString(), "M/d/yyyy h:mm:ss tt", System.Globalization.CultureInfo.InvariantCulture);
                                     break;
                                 case "Content":
                                     content = reader.ReadElementContentAsString();
