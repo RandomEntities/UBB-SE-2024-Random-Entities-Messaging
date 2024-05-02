@@ -16,15 +16,15 @@ namespace MauiApp1
             this.BindingContext = viewModel;
         }
 
-        public void OnSearchBarTextChanged(object sender, TextChangedEventArgs e)
+        public void OnSearchBarTextChanged(object sender, TextChangedEventArgs eventArguments)
         {
-            string text = e.NewTextValue;
+            string text = eventArguments.NewTextValue;
             viewModel.FilterContacts(text);
         }
 
-        private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void OnSelectionChanged(object sender, SelectionChangedEventArgs eventArguments)
         {
-            if (e.CurrentSelection.FirstOrDefault() is ContactLastMessage selectedContact)
+            if (eventArguments.CurrentSelection.FirstOrDefault() is ContactLastMessage selectedContact)
             {
                 string route = $"///ChatPage?chatId={selectedContact.ChatId}";
                 await Shell.Current.GoToAsync(route);
@@ -33,9 +33,9 @@ namespace MauiApp1
             }
         }
 
-        protected override void OnNavigatedTo(NavigatedToEventArgs args)
+        protected override void OnNavigatedTo(NavigatedToEventArgs arguments)
         {
-            base.OnNavigatedTo(args);
+            base.OnNavigatedTo(arguments);
 
             viewModel.RefreshContacts(string.Empty);
         }

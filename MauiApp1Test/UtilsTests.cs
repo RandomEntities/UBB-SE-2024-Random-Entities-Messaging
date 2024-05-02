@@ -9,7 +9,7 @@ namespace MauiApp1Test
     public class UtilsTests
     {
         [Test]
-        public void ReadUsersFromXml_ReturnsCorrectDataFromFile()
+        public void ReadUsersFromXml_LocallyInstantiatedDataWithDummyData_ReturnsDataFromFileCorrectly()
         {
             string testFilePath = "test_data.xml";
 
@@ -19,12 +19,12 @@ namespace MauiApp1Test
                 new User(2, "Alice Smith", "/path/to/profile2.jpg"),
                 new User(3, "Bob Johnson", "/path/to/profile3.jpg")
             };
-            FakeUtils.WriteUserToXml(expectedUsers[0], testFilePath);
-            FakeUtils.WriteUserToXmlAppending(expectedUsers[1], testFilePath);
-            FakeUtils.WriteUserToXmlAppending(expectedUsers[2], testFilePath);
+            Utils.WriteUserToXml(expectedUsers[0], testFilePath);
+            Utils.WriteUserToXmlAppending(expectedUsers[1], testFilePath);
+            Utils.WriteUserToXmlAppending(expectedUsers[2], testFilePath);
 
             // Act
-            var actualUsers = FakeUtils.ReadUsersFromXml(testFilePath);
+            var actualUsers = Utils.ReadUsersFromXml(testFilePath);
 
             // Assert
             Assert.That(actualUsers, Is.Not.Null);
@@ -41,7 +41,7 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void ReadChatsFromXml_ReturnsCorrectDataFromFile()
+        public void ReadChatsFromXml_LocallyInstantiatedDataWithDummyData_ReturnsDataFromFileCorrectly()
         {
             string testFilePath = "test_data.xml";
 
@@ -55,9 +55,9 @@ namespace MauiApp1Test
             expectedChats[1].AddMessage(new TextMessage(3, 2, 3, DateTime.Now, "Delivered", "Hey Bob!"));
             expectedChats[1].AddMessage(new TextMessage(4, 2, 3, DateTime.Now, "Read", "I'm good, thanks!"));
 
-            FakeUtils.WriteChatsToXml(expectedChats, testFilePath);
+            Utils.WriteChatsToXml(expectedChats, testFilePath);
 
-            List<Chat> actualChats = FakeUtils.ReadChatsFromXml(testFilePath);
+            List<Chat> actualChats = Utils.ReadChatsFromXml(testFilePath);
 
             Assert.That(actualChats, Is.Not.Null);
             Assert.That(actualChats.Count, Is.EqualTo(expectedChats.Count));
@@ -78,7 +78,7 @@ namespace MauiApp1Test
                     Assert.That(actualMessages[j].GetChatId(), Is.EqualTo(expectedMessages[j].GetChatId()));
                     Assert.That(actualMessages[j].GetSenderId(), Is.EqualTo(expectedMessages[j].GetSenderId()));
                     //Assert.That(actualMessages[j].GetTimestamp(), Is.EqualTo(expectedMessages[j].GetTimestamp()));
-                    Assert.That(actualMessages[j].GetMessage(), Is.EqualTo(expectedMessages[j].GetMessage()));
+                    Assert.That(actualMessages[j].GetMessageContent(), Is.EqualTo(expectedMessages[j].GetMessageContent()));
                     Assert.That(actualMessages[j].GetStatus(), Is.EqualTo(expectedMessages[j].GetStatus()));
                 }
             }
@@ -88,14 +88,14 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void WriteUserToXml_WritesUserToFile()
+        public void WriteUserToXml_LocallyInstantiatedUser_UserWrittenToFile()
         {
             // Arrange
             string filePath = "test_write_user.xml";
             User user = new User(1, "John Doe", "/path/to/profile1.jpg");
 
             // Act
-            FakeUtils.WriteUserToXml(user, filePath);
+            Utils.WriteUserToXml(user, filePath);
 
             // Assert
             Assert.That(File.Exists(filePath), Is.True, "File should exist after writing user data.");
@@ -105,14 +105,14 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void WriteUserToXmlAppending_AppendsUserToFile()
+        public void WriteUserToXmlAppending_LocallyInstantiatedUser_UserAppendedToFile()
         {
             // Arrange
             string filePath = "test_append_user.xml";
             User user = new User(2, "Alice Smith", "/path/to/profile2.jpg");
 
             // Act
-            FakeUtils.WriteUserToXmlAppending(user, filePath);
+            Utils.WriteUserToXmlAppending(user, filePath);
 
             // Assert
             Assert.That(File.Exists(filePath), Is.True, "File should exist after appending user data.");
@@ -122,14 +122,16 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void WriteChatsToXml_WritesChatsToFile()
+        public void WriteChatsToXml_LocallyInstantiatedChat_ChatsWrittenToFile()
         {
             // Arrange
             string filePath = "test_write_chats.xml";
             List<Chat> chats = new List<Chat>();
+            Chat chat = new Chat(0, 0, 1);
+            chats.Add(chat);
 
             // Act
-            FakeUtils.WriteChatsToXml(chats, filePath);
+            Utils.WriteChatsToXml(chats, filePath);
 
             // Assert
             Assert.That(File.Exists(filePath), Is.True, "File should exist after writing chat data.");
@@ -139,15 +141,19 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void ToStringWithLeadingZero_ReturnsStringWithLeadingZero()
+        public void ToStringWithLeadingZero_ProvidedTwoDummyNumbers_ReturnsStringWithLeadingZero()
         {
-            // Arrange & Act
-            string result1 = FakeUtils.ToStringWithLeadingZero(5);
-            string result2 = FakeUtils.ToStringWithLeadingZero(12);
+            // Act
+            int firstNumber = 5;
+            int secondNumber = 12;
+
+            // Arrange
+            string firstResult = Utils.ToStringWithLeadingZero(firstNumber);
+            string secondResult = Utils.ToStringWithLeadingZero(secondNumber);
 
             // Assert
-            Assert.That(result1, Is.EqualTo("05"));
-            Assert.That(result2, Is.EqualTo("12"));
+            Assert.That(firstResult, Is.EqualTo("05"));
+            Assert.That(secondResult, Is.EqualTo("12"));
         }
     }
 }

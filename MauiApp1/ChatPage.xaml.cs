@@ -55,9 +55,9 @@ public partial class ChatPage : ContentPage
                 viewModel.AddTextMessageToChat(result.FullPath);
             }
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
-            Console.WriteLine($"Error picking file: {ex.Message}");
+            Console.WriteLine($"Error picking file: {exception.Message}");
         }
     }
 
@@ -85,9 +85,9 @@ public partial class ChatPage : ContentPage
                 viewModel.AddTextMessageToChat(result.FullPath);
             }
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
-            Console.WriteLine($"Error picking file: {ex.Message}");
+            Console.WriteLine($"Error picking file: {exception.Message}");
         }
     }
 
@@ -115,9 +115,9 @@ public partial class ChatPage : ContentPage
                 viewModel.AddTextMessageToChat(result.FullPath);
             }
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
-            Console.WriteLine($"Error picking file: {ex.Message}");
+            Console.WriteLine($"Error picking file: {exception.Message}");
         }
     }
 

@@ -59,9 +59,9 @@ namespace MauiApp1.ViewModel
         {
             List<MessageModel> messages = service.GetChatMessages(chatId);
             Messages.Clear();
-            foreach (MessageModel m in messages)
+            foreach (MessageModel messageModel in messages)
             {
-                Messages.Add(m);
+                Messages.Add(messageModel);
             }
         }
 
@@ -79,7 +79,7 @@ namespace MauiApp1.ViewModel
             RefreshChatMessages();
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

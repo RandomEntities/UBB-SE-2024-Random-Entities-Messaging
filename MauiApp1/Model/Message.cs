@@ -23,7 +23,7 @@ namespace MauiApp1.Model
             this.status = status;
         }
 
-        public abstract string GetMessage();
+        public abstract string GetMessageContent();
 
         public int GetMessageId()
         {
