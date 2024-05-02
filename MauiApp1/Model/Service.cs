@@ -12,17 +12,17 @@ namespace MauiApp1.Model
     {
         private IRepository repo;
 
-        public Service(Repository repo)
+        public Service(IRepository repo)
         {
             this.repo = repo;
         }
 
-        private List<Chat> GetChatsSortedByLastMessageTimeStamp(int userId)
+        public List<Chat> GetChatsSortedByLastMessageTimeStamp(int userId)
         {
             return repo.GetChatsByUser(userId).OrderByDescending(chat => chat.GetLastMessage().GetTimestamp()).ToList();
         }
 
-        private List<Chat> FilterChatsByName(int userId, string name)
+        public List<Chat> FilterChatsByName(int userId, string name)
         {
             List<Chat> chats = GetChatsSortedByLastMessageTimeStamp(userId);
             if (name.Length == 0)

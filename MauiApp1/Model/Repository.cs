@@ -21,7 +21,7 @@ namespace MauiApp1.Model
             LoadUsersAndChats();
         }
 
-        private void SortChatMessages(Chat chat)
+        public void SortChatMessages(Chat chat)
         {
             List<Message> sortedMessages = chat.GetAllMessages().OrderBy(message => message.GetTimestamp()).ToList();
             chat.SetMessageList(sortedMessages);
