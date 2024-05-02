@@ -59,6 +59,15 @@
         <Status>New</Status>
         <Type>text</Type>
       </Message>
+      <Message>
+        <MessageId>7</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>3</SenderId>
+        <Timestamp>5/2/2024 11:03:07 AM</Timestamp>
+        <Content>Hello from testing part!</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
     </Messages>
   </Chat>
   <Chat>
@@ -117,6 +126,15 @@
         <SenderId>2</SenderId>
         <Timestamp>4/14/2024 8:17:25 PM</Timestamp>
         <Content>I'm fine</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>7</MessageId>
+        <ChatId>2</ChatId>
+        <SenderId>3</SenderId>
+        <Timestamp>5/2/2024 11:03:07 AM</Timestamp>
+        <Content>Hello from testing part!</Content>
         <Status>Sent</Status>
         <Type>text</Type>
       </Message>
