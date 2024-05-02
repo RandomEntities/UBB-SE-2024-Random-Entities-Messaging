@@ -11,6 +11,8 @@ namespace MauiApp1Test
 {
     public class RepositoryTests
     {
+        Repository repo;
+
         [SetUp]
         public void Setup()
         {
@@ -39,11 +41,11 @@ namespace MauiApp1Test
             FakeUtils.WriteUserToXml(expectedUsers[0], testUserFilePath);
             FakeUtils.WriteUserToXmlAppending(expectedUsers[1], testUserFilePath);
             FakeUtils.WriteUserToXmlAppending(expectedUsers[2], testUserFilePath);
-            Repository repo = new Repository(testUserFilePath, testChatFilePath);
 
+            repo = new Repository(testUserFilePath, testChatFilePath);
         }
 
-        [Test]
+        //[Test]
         //public void SortChatMessages_ChatMessagesBeSorted()
         //{
         //    var chat = new Chat(1, 101, 102);
@@ -53,6 +55,7 @@ namespace MauiApp1Test
         //    chat.AddMessage(msg2);
         //}
 
+        [Test]
         public void AddMessageToChat_CheckIfMessageWasAddedToChat()
         {
             TextMessage msg1 = new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hello");
@@ -60,12 +63,15 @@ namespace MauiApp1Test
             repo.AddMessageToChat(1, msg1);
             repo.AddMessageToChat(1, msg2);
 
-            List<Message> messagesAux = repo.GetChat(1).GetAllMessages();
+            Chat? chat = repo.GetChat(1);
+            if (chat != null)
+            {
+                List<Message> messagesAux = chat.GetAllMessages();
 
-
-            Assert.That(messagesAux[messagesAux.Count()-2], Is.EqualTo(msg1));
-            Assert.That(messagesAux[messagesAux.Count()-1], Is.EqualTo(msg2));
-
+                Assert.That(messagesAux[messagesAux.Count() - 2], Is.EqualTo(msg1));
+                Assert.That(messagesAux[messagesAux.Count() - 1], Is.EqualTo(msg2));
+            }
+            else Assert.That(false);
         }
     }
 }
