@@ -57,11 +57,10 @@ namespace MauiApp1Test
             List<Message> messagesAux = auxChat.GetAllMessages();
             Assert.That(messagesAux[0].Equals(msg1));
             Assert.That(messagesAux[1].Equals(msg2));
-
         }
 
         [Test]
-        public void AddMessageToChat_CheckIfMessageWasAddedToChat()
+        public void AddMessageToChat_NewChatsForExistingChat_MessageGetsAddedToChat()
         {
             TextMessage msg1 = new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hello");
             TextMessage msg2 = new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hi");
@@ -79,10 +78,49 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void GetChatsByUserTest()
+        public void GetChatsByUser_ChatExists_ReturnsListOfChats()
         {
             List<Chat> auxChats = repo.GetChatsByUser(1);
-            Assert.That(auxChats.Count() == 0);
+            Assert.That(auxChats.Count(), Is.EqualTo(1));
+        }
+
+        [Test]
+        public void GetChatsByUser_ChatDoesNotExist_ReturnsEmptyList()
+        {
+            List<Chat> auxChats = repo.GetChatsByUser(6);
+            Assert.That(auxChats.Count(), Is.EqualTo(0));
+        }
+
+        [Test]
+        public void GetUser_ExistentUser_ReturnsUser()
+        {
+            User auxUser = repo.GetUser(1);
+
+            Assert.NotNull(auxUser);
+        }
+
+        [Test]
+        public void GetUser_NonExistentUser_ReturnsNull()
+        {
+            User auxUser = repo.GetUser(6);
+
+            Assert.IsNull(auxUser);
+        }
+
+        [Test]
+        public void GetChat_ExistentChat_ReturnsChat()
+        {
+            Chat auxChat = repo.GetChat(6);
+
+            Assert.IsNull(auxChat);
+        }
+
+        [Test]
+        public void GetChat_NonExistent_ReturnsNull()
+        {
+            Chat auxChat = repo.GetChat(6);
+
+            Assert.IsNull(auxChat);
         }
     }
 }
