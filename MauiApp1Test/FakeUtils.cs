@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
 namespace MauiApp1.Model
 {
-    public class Utils
+    public class FakeUtils
     {
         public static List<User> ReadUsersFromXml(string filePath)
         {
@@ -206,7 +205,7 @@ namespace MauiApp1.Model
                                     senderId = int.Parse(reader.ReadElementContentAsString());
                                     break;
                                 case "Timestamp":
-                                    timestamp = DateTime.ParseExact(reader.ReadElementContentAsString(), "MM/dd/yyyy hh:mm:ss tt", System.Globalization.CultureInfo.InvariantCulture);
+                                    timestamp = DateTime.ParseExact(reader.ReadElementContentAsString(), "M/d/yyyy h:mm:ss tt", System.Globalization.CultureInfo.InvariantCulture);
                                     break;
                                 case "Content":
                                     content = reader.ReadElementContentAsString();
