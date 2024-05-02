@@ -9,7 +9,7 @@
             this.filePath = filePath;
         }
 
-        public override string GetMessage()
+        public override string GetMessageContent()
         {
             return filePath;
         }

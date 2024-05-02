@@ -213,7 +213,7 @@ namespace MauiApp1Test
 
             List<Message> chatMessages = repo.GetChat(chatId).GetAllMessages();
             Assert.That(chatMessages.Count, Is.EqualTo(2));
-            Assert.IsTrue(chatMessages.Exists(m => m.GetMessage() == text));
+            Assert.IsTrue(chatMessages.Exists(m => m.GetMessageContent() == text));
         }
     }
 }

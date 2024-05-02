@@ -66,7 +66,7 @@ namespace MauiApp1.Model
             return allChats.Find(chat => chat.ChatId == chatId);
         }
 
-        public void AddMessageToChat(int chatId, Message message)
+        public void AddMessageToChat(int chatId, Message messageToAdd)
         {
             Chat? chat = GetChat(chatId);
             if (chat == null)
@@ -82,43 +82,43 @@ namespace MauiApp1.Model
             }
 
             int lastId = 0;
-            foreach (Message m in chat.GetAllMessages())
+            foreach (Message message in chat.GetAllMessages())
             {
-                int mId = m.GetMessageId();
+                int mId = message.GetMessageId();
                 if (mId > lastId)
                 {
                     lastId = mId;
                 }
             }
 
-            message.SetMessageId(lastId + 1);
-            message.SetStatus("Sent");
+            messageToAdd.SetMessageId(lastId + 1);
+            messageToAdd.SetStatus("Sent");
 
-            Message message2;
+            Message newMessage;
 
-            if (message is TextMessage)
+            if (messageToAdd is TextMessage)
             {
-                message2 = new TextMessage(lastId + 1, oppositeChatId, message.GetSenderId(), message.GetTimestamp(), "New", message.GetMessage());
+                newMessage = new TextMessage(lastId + 1, oppositeChatId, messageToAdd.GetSenderId(), messageToAdd.GetTimestamp(), "New", messageToAdd.GetMessageContent());
             }
-            else if (message is FileMessage)
+            else if (messageToAdd is FileMessage)
             {
-                message2 = new FileMessage(lastId + 1, oppositeChatId, message.GetSenderId(), message.GetTimestamp(), "New", message.GetMessage());
+                newMessage = new FileMessage(lastId + 1, oppositeChatId, messageToAdd.GetSenderId(), messageToAdd.GetTimestamp(), "New", messageToAdd.GetMessageContent());
             }
-            else if (message is VoiceMessage)
+            else if (messageToAdd is VoiceMessage)
             {
-                message2 = new VoiceMessage(lastId + 1, oppositeChatId, message.GetSenderId(), message.GetTimestamp(), "New", message.GetMessage());
+                newMessage = new VoiceMessage(lastId + 1, oppositeChatId, messageToAdd.GetSenderId(), messageToAdd.GetTimestamp(), "New", messageToAdd.GetMessageContent());
             }
-            else if (message is VideoMessage)
+            else if (messageToAdd is VideoMessage)
             {
-                message2 = new VideoMessage(lastId + 1, oppositeChatId, message.GetSenderId(), message.GetTimestamp(), "New", message.GetMessage());
+                newMessage = new VideoMessage(lastId + 1, oppositeChatId, messageToAdd.GetSenderId(), messageToAdd.GetTimestamp(), "New", messageToAdd.GetMessageContent());
             }
             else
             {
-                message2 = new PhotoMessage(lastId + 1, oppositeChatId, message.GetSenderId(), message.GetTimestamp(), "New", message.GetMessage());
+                newMessage = new PhotoMessage(lastId + 1, oppositeChatId, messageToAdd.GetSenderId(), messageToAdd.GetTimestamp(), "New", messageToAdd.GetMessageContent());
             }
 
-            chat.AddMessage(message);
-            oppositeChat.AddMessage(message2);
+            chat.AddMessage(messageToAdd);
+            oppositeChat.AddMessage(newMessage);
             SortChatMessages(chat);
             SortChatMessages(oppositeChat);
 

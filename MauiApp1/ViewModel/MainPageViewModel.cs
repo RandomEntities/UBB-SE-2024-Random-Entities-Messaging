@@ -26,11 +26,11 @@ namespace MauiApp1.ViewModel
 
         public void RefreshContacts(string searchText)
         {
-            List<ContactLastMessage> contacts = service.GetContactLastMessages(userId, searchText);
+            List<ContactLastMessage> contactMessages = service.GetContactLastMessages(userId, searchText);
             Contacts.Clear();
-            foreach (var c in contacts)
+            foreach (ContactLastMessage contactMessage in contactMessages)
             {
-                Contacts.Add(c);
+                Contacts.Add(contactMessage);
             }
         }
 

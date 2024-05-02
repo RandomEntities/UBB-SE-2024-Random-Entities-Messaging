@@ -160,9 +160,9 @@ namespace MauiApp1.Model
 
                                 if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Chat")
                                 {
-                                    Chat c1 = new Chat(chatId, senderId, receiverId);
-                                    c1.SetMessageList(messages);
-                                    chats.Add(c1);
+                                    Chat chat = new Chat(chatId, senderId, receiverId);
+                                    chat.SetMessageList(messages);
+                                    chats.Add(chat);
                                     break;
                                 }
                             }
@@ -279,46 +279,46 @@ namespace MauiApp1.Model
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Chats");
 
-                foreach (Chat c in chats)
+                foreach (Chat chat in chats)
                 {
                     writer.WriteStartElement("Chat");
-                    writer.WriteElementString("ChatId", c.ChatId.ToString());
-                    writer.WriteElementString("SenderId", c.SenderId.ToString());
-                    writer.WriteElementString("ReceiverId", c.ReceiverId.ToString());
+                    writer.WriteElementString("ChatId", chat.ChatId.ToString());
+                    writer.WriteElementString("SenderId", chat.SenderId.ToString());
+                    writer.WriteElementString("ReceiverId", chat.ReceiverId.ToString());
 
                     writer.WriteStartElement("Messages");
 
-                    foreach (Message m in c.GetAllMessages())
+                    foreach (Message message in chat.GetAllMessages())
                     {
                         writer.WriteStartElement("Message");
-                        writer.WriteElementString("MessageId", m.GetMessageId().ToString());
-                        writer.WriteElementString("ChatId", m.GetChatId().ToString());
-                        writer.WriteElementString("SenderId", m.GetSenderId().ToString());
-                        writer.WriteElementString("Timestamp", m.GetTimestamp().ToString());
-                        writer.WriteElementString("Content", m.GetMessage());
-                        writer.WriteElementString("Status", m.GetStatus());
+                        writer.WriteElementString("MessageId", message.GetMessageId().ToString());
+                        writer.WriteElementString("ChatId", message.GetChatId().ToString());
+                        writer.WriteElementString("SenderId", message.GetSenderId().ToString());
+                        writer.WriteElementString("Timestamp", message.GetTimestamp().ToString());
+                        writer.WriteElementString("Content", message.GetMessageContent());
+                        writer.WriteElementString("Status", message.GetStatus());
 
-                        if (m.GetType() == typeof(TextMessage))
+                        if (message.GetType() == typeof(TextMessage))
                         {
                             writer.WriteElementString("Type", "text");
                         }
 
-                        if (m.GetType() == typeof(VideoMessage))
+                        if (message.GetType() == typeof(VideoMessage))
                         {
                             writer.WriteElementString("Type", "video");
                         }
 
-                        if (m.GetType() == typeof(VoiceMessage))
+                        if (message.GetType() == typeof(VoiceMessage))
                         {
                             writer.WriteElementString("Type", "voice");
                         }
 
-                        if (m.GetType() == typeof(PhotoMessage))
+                        if (message.GetType() == typeof(PhotoMessage))
                         {
                             writer.WriteElementString("Type", "photo");
                         }
 
-                        if (m.GetType() == typeof(FileMessage))
+                        if (message.GetType() == typeof(FileMessage))
                         {
                             writer.WriteElementString("Type", "file");
                         }

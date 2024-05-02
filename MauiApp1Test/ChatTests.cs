@@ -15,13 +15,13 @@ namespace MauiApp1Test
         {
             // Arrange
             var chat = new Chat(1, 101, 102);
-            TextMessage msg = new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hello");
+            TextMessage message = new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hello");
 
             // Act
-            chat.AddMessage(msg);
+            chat.AddMessage(message);
 
             // Assert
-            Assert.That(chat.GetAllMessages()[0], Is.EqualTo(msg));
+            Assert.That(chat.GetAllMessages()[0], Is.EqualTo(message));
             Assert.That(chat.GetAllMessages().Count, Is.EqualTo(1));
         }
 
@@ -30,16 +30,16 @@ namespace MauiApp1Test
         {
             // Arrange
             var chat = new Chat(1, 101, 102);
-            TextMessage msg1 = new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hello");
-            TextMessage msg2 = new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hi");
-            chat.AddMessage(msg1);
-            chat.AddMessage(msg2);
+            TextMessage firstMessage = new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hello");
+            TextMessage secondMessage = new TextMessage(1, 0, 0, DateTime.Now, "Sent", "Hi");
+            chat.AddMessage(firstMessage);
+            chat.AddMessage(secondMessage);
 
             // Act
             var lastMessage = chat.GetLastMessage();
 
             // Assert
-            Assert.That(lastMessage, Is.EqualTo(msg2));
+            Assert.That(lastMessage, Is.EqualTo(secondMessage));
         }
 
         [Test]
@@ -65,18 +65,18 @@ namespace MauiApp1Test
         {
             // Arrange
             var chat = new Chat(1, 101, 102);
-            TextMessage msg1 = new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hello");
-            TextMessage msg2 = new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hi");
-            chat.AddMessage(msg1);
-            chat.AddMessage(msg2);
+            TextMessage firstMessage = new TextMessage(0, 0, 0, DateTime.Now, "Sent", "Hello");
+            TextMessage secondMessage = new TextMessage(1, 0, 0, DateTime.Now, "Sent", "Hi");
+            chat.AddMessage(firstMessage);
+            chat.AddMessage(secondMessage);
 
             // Act
             var allMessages = chat.GetAllMessages();
 
             // Assert
             Assert.That(allMessages.Count, Is.EqualTo(2));
-            Assert.IsTrue(allMessages.Contains(msg1));
-            Assert.IsTrue(allMessages.Contains(msg2));
+            Assert.IsTrue(allMessages.Contains(firstMessage));
+            Assert.IsTrue(allMessages.Contains(secondMessage));
         }
     }
 }
