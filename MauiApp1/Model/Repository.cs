@@ -74,7 +74,7 @@ namespace MauiApp1.Model
                 return;
             }
 
-            int oppositeChatId = (chatId % 2 == 0 ? chatId - 1 : chatId + 1);
+            int oppositeChatId = chatId % 2 == 0 ? chatId - 1 : chatId + 1;
             Chat? oppositeChat = GetChat(oppositeChatId);
             if (oppositeChat == null)
             {
@@ -84,10 +84,10 @@ namespace MauiApp1.Model
             int lastId = 0;
             foreach (Message message in chat.GetAllMessages())
             {
-                int mId = message.GetMessageId();
-                if (mId > lastId)
+                int messageId = message.GetMessageId();
+                if (messageId > lastId)
                 {
-                    lastId = mId;
+                    lastId = messageId;
                 }
             }
 

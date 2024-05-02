@@ -135,7 +135,7 @@ namespace MauiApp1.Model
             {
                 if (message is Message)
                 {
-                    bool incoming = (message.GetSenderId() == chat.ReceiverId);
+                    bool incoming = message.GetSenderId() == chat.ReceiverId;
                     MessageModel model = new MessageModel("text", incoming, message.GetMessageContent());
                     result.Add(model);
                 }

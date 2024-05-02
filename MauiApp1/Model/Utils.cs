@@ -56,9 +56,9 @@ namespace MauiApp1.Model
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(exception.Message);
             }
 
             return users;
@@ -170,9 +170,9 @@ namespace MauiApp1.Model
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(exception.Message);
             }
 
             return chats;
@@ -269,9 +269,9 @@ namespace MauiApp1.Model
             {
                 File.Delete(filePath);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(exception.Message);
             }
 
             using (XmlWriter writer = XmlWriter.Create(filePath, settings))

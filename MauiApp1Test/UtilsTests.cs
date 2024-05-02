@@ -9,7 +9,7 @@ namespace MauiApp1Test
     public class UtilsTests
     {
         [Test]
-        public void ReadUsersFromXml_ReturnsCorrectDataFromFile()
+        public void ReadUsersFromXml_LocallyInstantiatedDataWithDummyData_ReturnsDataFromFileCorrectly()
         {
             string testFilePath = "test_data.xml";
 
@@ -41,7 +41,7 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void ReadChatsFromXml_ReturnsCorrectDataFromFile()
+        public void ReadChatsFromXml_LocallyInstantiatedDataWithDummyData_ReturnsDataFromFileCorrectly()
         {
             string testFilePath = "test_data.xml";
 
@@ -88,7 +88,7 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void WriteUserToXml_WritesUserToFile()
+        public void WriteUserToXml_LocallyInstantiatedUser_UserWrittenToFile()
         {
             // Arrange
             string filePath = "test_write_user.xml";
@@ -105,7 +105,7 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void WriteUserToXmlAppending_AppendsUserToFile()
+        public void WriteUserToXmlAppending_LocallyInstantiatedUser_UserAppendedToFile()
         {
             // Arrange
             string filePath = "test_append_user.xml";
@@ -122,11 +122,13 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void WriteChatsToXml_WritesChatsToFile()
+        public void WriteChatsToXml_LocallyInstantiatedChat_ChatsWrittenToFile()
         {
             // Arrange
             string filePath = "test_write_chats.xml";
             List<Chat> chats = new List<Chat>();
+            Chat chat = new Chat(0, 0, 1);
+            chats.Add(chat);
 
             // Act
             Utils.WriteChatsToXml(chats, filePath);
@@ -139,15 +141,19 @@ namespace MauiApp1Test
         }
 
         [Test]
-        public void ToStringWithLeadingZero_ReturnsStringWithLeadingZero()
+        public void ToStringWithLeadingZero_ProvidedTwoDummyNumbers_ReturnsStringWithLeadingZero()
         {
-            // Arrange & Act
-            string result1 = Utils.ToStringWithLeadingZero(5);
-            string result2 = Utils.ToStringWithLeadingZero(12);
+            // Act
+            int firstNumber = 5;
+            int secondNumber = 12;
+
+            // Arrange
+            string firstResult = Utils.ToStringWithLeadingZero(firstNumber);
+            string secondResult = Utils.ToStringWithLeadingZero(secondNumber);
 
             // Assert
-            Assert.That(result1, Is.EqualTo("05"));
-            Assert.That(result2, Is.EqualTo("12"));
+            Assert.That(firstResult, Is.EqualTo("05"));
+            Assert.That(secondResult, Is.EqualTo("12"));
         }
     }
 }
