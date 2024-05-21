@@ -24,7 +24,7 @@ namespace MauiApp1
 
         private async void OnSelectionChanged(object sender, SelectionChangedEventArgs eventArguments)
         {
-            if (eventArguments.CurrentSelection.FirstOrDefault() is ContactLastMessage selectedContact)
+            if (eventArguments.CurrentSelection.FirstOrDefault() is ChatSummary selectedContact)
             {
                 string route = $"///ChatPage?chatId={selectedContact.ChatId}";
                 await Shell.Current.GoToAsync(route);
@@ -37,7 +37,7 @@ namespace MauiApp1
         {
             base.OnNavigatedTo(arguments);
 
-            viewModel.RefreshContacts(string.Empty);
+            viewModel.FilterContacts(string.Empty);
         }
     }
 }

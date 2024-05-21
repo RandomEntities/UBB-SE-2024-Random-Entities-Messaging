@@ -13,13 +13,13 @@ namespace MauiApp1.Model
     {
         public int UserId { get; }
         public string Name { get; }
-        public string ProfilePhotoPath { get; }
+        public string ProfilePhotoUrl { get; }
 
         public User(int userId, string name, string profilePhotoPath)
         {
             this.UserId = userId;
             this.Name = name;
-            this.ProfilePhotoPath = profilePhotoPath;
+            this.ProfilePhotoUrl = profilePhotoPath;
         }
     }
 }

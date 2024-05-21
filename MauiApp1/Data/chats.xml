@@ -68,6 +68,15 @@
         <Status>New</Status>
         <Type>text</Type>
       </Message>
+      <Message>
+        <MessageId>8</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>5/21/2024 11:50:13 AM</Timestamp>
+        <Content>C:\Users\Norbi\Downloads\360_F_599535831_pwQFVG0qtf6ksLXeVTnUwFMvoW5H0WiS.jpg</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
     </Messages>
   </Chat>
   <Chat>
@@ -136,6 +145,15 @@
         <Timestamp>5/2/2024 11:03:07 AM</Timestamp>
         <Content>Hello from testing part!</Content>
         <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>8</MessageId>
+        <ChatId>2</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>5/21/2024 11:50:13 AM</Timestamp>
+        <Content>C:\Users\Norbi\Downloads\360_F_599535831_pwQFVG0qtf6ksLXeVTnUwFMvoW5H0WiS.jpg</Content>
+        <Status>New</Status>
         <Type>text</Type>
       </Message>
     </Messages>

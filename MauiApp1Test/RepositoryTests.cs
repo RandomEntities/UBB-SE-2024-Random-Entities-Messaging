@@ -28,7 +28,7 @@ namespace MauiApp1Test
             expectedChats[1].AddMessage(new TextMessage(3, 2, 3, DateTime.Now, "Delivered", "Hey Bob!"));
             expectedChats[1].AddMessage(new TextMessage(4, 2, 3, DateTime.Now, "Read", "I'm good, thanks!"));
 
-            Utils.WriteChatsToXml(expectedChats, testChatFilePath);
+            MauiApp1.Model.Extensions.WriteChatsToXml(expectedChats, testChatFilePath);
 
             string testUserFilePath = "test_user_data.xml";
 
@@ -38,9 +38,9 @@ namespace MauiApp1Test
                 new User(2, "Alice Smith", "/path/to/profile2.jpg"),
                 new User(3, "Bob Johnson", "/path/to/profile3.jpg")
             };
-            Utils.WriteUserToXml(expectedUsers[0], testUserFilePath);
-            Utils.WriteUserToXmlAppending(expectedUsers[1], testUserFilePath);
-            Utils.WriteUserToXmlAppending(expectedUsers[2], testUserFilePath);
+            MauiApp1.Model.Extensions.WriteUserToXml(expectedUsers[0], testUserFilePath);
+            MauiApp1.Model.Extensions.WriteUserToXmlAppending(expectedUsers[1], testUserFilePath);
+            MauiApp1.Model.Extensions.WriteUserToXmlAppending(expectedUsers[2], testUserFilePath);
 
             repo = new Repository(testUserFilePath, testChatFilePath);
         }

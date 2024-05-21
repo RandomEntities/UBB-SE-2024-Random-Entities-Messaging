@@ -17,131 +17,123 @@ namespace MauiApp1.Model
             this.repository = repo;
         }
 
-        public List<Chat> GetChatsSortedByLastMessageTimeStamp(int userId)
+        public List<ChatSummary> GetUserChatSummaries(int userId, string participantName)
         {
-            return repository.GetChatsByUser(userId).OrderByDescending(chat => chat.GetLastMessage().GetTimestamp()).ToList();
-        }
+            // Initialize the result.
+            List<ChatSummary> result = new List<ChatSummary>();
 
-        public List<Chat> FilterChatsByName(int userId, string name)
-        {
-            List<Chat> chats = GetChatsSortedByLastMessageTimeStamp(userId);
-            if (name.Length == 0)
-            {
-                return chats;
-            }
+            // Get all the user's chats.
+            List<Chat> chats = repository.GetUserChats(userId);
+            chats = SortChatsByLastMessageTimeStamp(chats);
 
-            name = name.ToLower();
+            // Filter the chats based on the given name.
+            chats = FilterChatsByName(chats, participantName);
 
-            List<Chat> matchingChats = new List<Chat>();
+            // Go through all the chats.
             foreach (Chat chat in chats)
             {
-                User? user = repository.GetUser(chat.ReceiverId);
-                if (user == null)
+                ChatSummary chatSummary = GetChatSummary(userId, chat.ChatId);
+                if (chatSummary != null)
                 {
-                    continue;
+                    result.Add(chatSummary);
                 }
-
-                string userName = user.Name.ToLower();
-                if (userName.Contains(name))
-                {
-                    matchingChats.Add(chat);
-                }
-            }
-
-            return matchingChats;
-        }
-
-        public List<ContactLastMessage> GetContactLastMessages(int userId, string name)
-        {
-            List<ContactLastMessage> result = new List<ContactLastMessage>();
-
-            List<Chat> chats = this.FilterChatsByName(userId, name);
-            foreach (Chat chat in chats)
-            {
-                User? user = repository.GetUser(chat.ReceiverId);
-                if (user == null)
-                {
-                    continue;
-                }
-
-                Message message = chat.GetLastMessage();
-                string messageContent = message.GetMessageContent();
-                if (message.GetSenderId() == userId)
-                {
-                    messageContent = "You: " + messageContent;
-                }
-                if (messageContent.Length > 20)
-                {
-                    messageContent = messageContent.Substring(0, 17) + "...";
-                }
-
-                DateTime dateTime = message.GetTimestamp();
-                string time = Utils.ToStringWithLeadingZero(dateTime.Day) + "." + Utils.ToStringWithLeadingZero(dateTime.Month) + "\n";
-                time = time + Utils.ToStringWithLeadingZero(dateTime.Hour) + ":" + Utils.ToStringWithLeadingZero(dateTime.Minute);
-
-                ContactLastMessage contactLastMessage = new ContactLastMessage(user.Name, user.ProfilePhotoPath, messageContent, time, message.GetStatus(), chat.ChatId);
-                result.Add(contactLastMessage);
             }
 
             return result;
         }
 
-        public string GetContactName(int chatId)
+        public ChatSummary GetChatSummary(int userId, int chatId)
         {
-            Chat? chat = repository.GetChat(chatId);
+            // Get the chat by ID.
+            Chat chat = repository.GetChat(chatId);
             if (chat == null)
             {
-                return string.Empty;
+                return null;
             }
 
-            User? contact = repository.GetUser(chat.ReceiverId);
-            if (contact == null)
+            // Get a list of all the chat participants.
+            List<User> chatUsers = repository.GetChatParticipants(chat.ChatId);
+
+            // Remove the current user.
+            chatUsers.RemoveAll(u => u.UserId == userId);
+
+            // Concatenate participant names.
+            string participantNames = string.Join(", ", chatUsers.Select(u => u.Name));
+
+            // Get the profile picture of the first participant that is not the current user.
+            string profilePhotoUrl = chatUsers.FirstOrDefault()?.ProfilePhotoUrl ?? string.Empty;
+
+            // Get the last message.
+            Message lastChatMessage = repository.GetChatLastMessage(chat.ChatId);
+            string messageContent = lastChatMessage.GetMessageContent();
+
+            // Prepend "You: " if the current user is the sender.
+            if (lastChatMessage.SenderId == userId)
             {
-                return string.Empty;
+                messageContent = "You: " + messageContent;
             }
 
-            return contact.Name;
+            // Truncate message content if it exceeds 20 characters.
+            if (messageContent.Length > 20)
+            {
+                messageContent = messageContent.Substring(0, 17) + "...";
+            }
+
+            // Format the timestamp.
+            DateTime dateTime = lastChatMessage.Timestamp;
+            string time = $"{dateTime.Day.ToStringWithLeadingZero()}.{dateTime.Month.ToStringWithLeadingZero()}\n{dateTime.Hour.ToStringWithLeadingZero()}:{dateTime.Minute.ToStringWithLeadingZero()}";
+
+            // Create and return a new ChatSummary object.
+            ChatSummary chatSummary = new ChatSummary(participantNames, profilePhotoUrl, messageContent, time, lastChatMessage.Status, chat.ChatId);
+            return chatSummary;
         }
 
-        public string GetContactProfilePhotoPath(int chatId)
+        public List<MessageModel> GetChatMessageModels(int chatId, int userId)
         {
-            Chat? chat = repository.GetChat(chatId);
-            if (chat == null)
-            {
-                return string.Empty;
-            }
-
-            User? contact = repository.GetUser(chat.ReceiverId);
-            if (contact == null)
-            {
-                return string.Empty;
-            }
-
-            return contact.ProfilePhotoPath;
-        }
-
-        public List<MessageModel> GetChatMessages(int chatId)
-        {
+            // Initialize the result.
             List<MessageModel> result = new List<MessageModel>();
 
-            Chat? chat = repository.GetChat(chatId);
-            if (chat == null)
-            {
-                return result;
-            }
-
-            List<Message> messages = chat.GetAllMessages();
+            // Get all the chat messages from the database.
+            List<Message> messages = repository.GetChatMessages(chatId);
             foreach (Message message in messages)
             {
                 if (message is Message)
                 {
-                    bool incoming = message.GetSenderId() == chat.ReceiverId;
-                    MessageModel model = new MessageModel("text", incoming, message.GetMessageContent());
+                    MessageModel model = new MessageModel(type: "text", incoming: message.SenderId != userId, text: message.GetMessageContent());
                     result.Add(model);
                 }
             }
 
             return result;
+        }
+
+        private List<Chat> FilterChatsByName(List<Chat> chats, string participantName)
+        {
+            if (string.IsNullOrWhiteSpace(participantName))
+            {
+                return chats;
+            }
+
+            participantName = participantName.ToLower();
+            List<Chat> filteredChats = new List<Chat>();
+
+            foreach (Chat chat in chats)
+            {
+                List<User> chatUsers = repository.GetChatParticipants(chat.ChatId);
+
+                // Check if any participant's name matches the given participant name.
+                if (chatUsers.Any(user => user.Name.ToLower().Contains(participantName)))
+                {
+                    filteredChats.Add(chat);
+                }
+            }
+
+            return filteredChats;
+        }
+
+        private List<Chat> SortChatsByLastMessageTimeStamp(List<Chat> chats)
+        {
+            return chats.OrderByDescending(chat => repository.GetChatLastMessage(chat.ChatId).Timestamp).ToList();
         }
 
         public void AddTextMessageToChat(int chatId, int senderId, string text)

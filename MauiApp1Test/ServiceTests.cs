@@ -98,7 +98,7 @@ namespace MauiApp1Test
             int userId = 0;
             string name = "DefaultName";
 
-            List<ContactLastMessage> result = service.GetContactLastMessages(userId, name);
+            List<ChatSummary> result = service.GetContactLastMessages(userId, name);
 
             Assert.IsNotNull(result);
             Assert.That(result.Count, Is.EqualTo(1));
@@ -110,7 +110,7 @@ namespace MauiApp1Test
             int userId = 3;
             string name = "DefaultName";
 
-            List<ContactLastMessage> result = service.GetContactLastMessages(userId, name);
+            List<ChatSummary> result = service.GetContactLastMessages(userId, name);
 
             Assert.IsNotNull(result);
             Assert.That(result.Count, Is.EqualTo(0));
@@ -122,7 +122,7 @@ namespace MauiApp1Test
             int userId = 0;
             string name = "NotDefaultName";
 
-            List<ContactLastMessage> result = service.GetContactLastMessages(userId, name);
+            List<ChatSummary> result = service.GetContactLastMessages(userId, name);
 
             Assert.IsNotNull(result);
             Assert.That(result.Count, Is.EqualTo(0));
@@ -134,7 +134,7 @@ namespace MauiApp1Test
             int userId = 2;
             string name = "NotDefaultName";
 
-            List<ContactLastMessage> result = service.GetContactLastMessages(userId, name);
+            List<ChatSummary> result = service.GetContactLastMessages(userId, name);
 
             Assert.IsNotNull(result);
             Assert.That(result.Count, Is.EqualTo(0));
@@ -185,7 +185,7 @@ namespace MauiApp1Test
         {
             int chatId = 0;
 
-            List<MessageModel> result = service.GetChatMessages(chatId);
+            List<MessageModel> result = service.GetChatMessageModels(chatId);
 
             Assert.IsNotNull(result);
             Assert.That(result.Count, Is.EqualTo(1));
@@ -196,7 +196,7 @@ namespace MauiApp1Test
         {
             int chatId = 2;
 
-            List<MessageModel> result = service.GetChatMessages(chatId);
+            List<MessageModel> result = service.GetChatMessageModels(chatId);
 
             Assert.IsNotNull(result);
             Assert.That(result.Count, Is.EqualTo(0));

@@ -20,17 +20,14 @@ namespace MauiApp1
 
             int userId = 1;
 
-            builder.Services.AddSingleton<Repository>(serviceProvider =>
+            builder.Services.AddSingleton<HttpRepository>(serviceProvider =>
             {
-                string localPath = Directory.GetParent(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)).Parent.Parent.Parent.Parent.FullName;
-                string usersFilePath = localPath + @"\Data\users.xml";
-                string chatsFilePath = localPath + @"\Data\chats.xml";
-                return new Repository(usersFilePath, chatsFilePath);
+                return new HttpRepository();
             });
 
             builder.Services.AddSingleton<Service>(serviceProvider =>
             {
-                var repo = serviceProvider.GetRequiredService<Repository>();
+                var repo = serviceProvider.GetRequiredService<HttpRepository>();
                 return new Service(repo);
             });
 
@@ -61,6 +58,9 @@ namespace MauiApp1
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            // Register HttpClient.
+            builder.Services.AddHttpClient();
 
             return builder.Build();
         }

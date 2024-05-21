@@ -7,12 +7,14 @@ using System.Xml;
 
 namespace MauiApp1.Model
 {
-    public class Chat
+    public class UserChat
     {
+        public int UserId { get; private set; }
         public int ChatId { get; private set; }
 
-        public Chat(int chatId)
+        public UserChat(int userId, int chatId)
         {
+            this.UserId = userId;
             this.ChatId = chatId;
         }
     }

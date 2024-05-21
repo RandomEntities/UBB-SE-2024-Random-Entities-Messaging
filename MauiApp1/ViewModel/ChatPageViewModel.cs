@@ -13,8 +13,8 @@ namespace MauiApp1.ViewModel
     public class ChatPageViewModel : INotifyPropertyChanged
     {
         private int userId;
-        private readonly IService service;
         private int chatId;
+        private readonly IService service;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -55,22 +55,22 @@ namespace MauiApp1.ViewModel
             Messages = new ObservableCollection<MessageModel>();
         }
 
-        private void RefreshChatMessages()
+        public void SetChatId(int chatId) // This is called from the ChatPage whenever the chatId is changed there.
         {
-            List<MessageModel> messages = service.GetChatMessages(chatId);
+            this.chatId = chatId;
+            ContactName = service.GetChatSummary(userId, chatId).PaticipantsNames;
+            ContactProfilePhotoPath = service.GetChatSummary(userId, chatId).PhotoUrl;
+            RefreshChatMessages();
+        }
+
+        private void RefreshChatMessages() // Refresh the list with the messages based on the chat id.
+        {
+            // Clear the list with the old messages and add the ones from returned by the service.
             Messages.Clear();
-            foreach (MessageModel messageModel in messages)
+            foreach (MessageModel messageModel in service.GetChatMessageModels(chatId, userId))
             {
                 Messages.Add(messageModel);
             }
-        }
-
-        public void SetChatId(int chatId)
-        {
-            this.chatId = chatId;
-            ContactName = service.GetContactName(chatId);
-            ContactProfilePhotoPath = service.GetContactProfilePhotoPath(chatId);
-            RefreshChatMessages();
         }
 
         public void AddTextMessageToChat(string text)
