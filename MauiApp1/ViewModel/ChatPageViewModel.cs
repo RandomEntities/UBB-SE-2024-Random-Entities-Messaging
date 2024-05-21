@@ -18,29 +18,29 @@ namespace MauiApp1.ViewModel
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private string contactName;
-        public string ContactName
+        private string chatTitle;
+        public string ChatTitle
         {
-            get => contactName;
+            get => chatTitle;
             private set
             {
-                if (contactName != value)
+                if (chatTitle != value)
                 {
-                    contactName = value;
+                    chatTitle = value;
                     OnPropertyChanged();
                 }
             }
         }
 
-        private string contactProfilePhotoPath;
-        public string ContactProfilePhotoPath
+        private string chatPictureUrl;
+        public string ChatPictureUrl
         {
-            get => contactProfilePhotoPath;
+            get => chatPictureUrl;
             private set
             {
-                if (value != contactProfilePhotoPath)
+                if (value != chatPictureUrl)
                 {
-                    contactProfilePhotoPath = value;
+                    chatPictureUrl = value;
                     OnPropertyChanged();
                 }
             }
@@ -58,8 +58,9 @@ namespace MauiApp1.ViewModel
         public void SetChatId(int chatId) // This is called from the ChatPage whenever the chatId is changed there.
         {
             this.chatId = chatId;
-            ContactName = service.GetChatSummary(userId, chatId).PaticipantsNames;
-            ContactProfilePhotoPath = service.GetChatSummary(userId, chatId).PhotoUrl;
+            ChatTitle = service.GetChatSummary(userId, chatId).PaticipantsNames;
+            ChatPictureUrl = service.GetChatSummary(userId, chatId).PhotoUrl;
+            // ChatPictureUrl = @"https://ironvalley.netlify.app/LOGOIV.png";
             RefreshChatMessages();
         }
 
