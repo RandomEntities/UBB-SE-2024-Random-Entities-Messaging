@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace MauiApp1.Model
 {
-    public class HttpRepository : IRepository
+    public class Repository : IRepository
     {
         public Chat GetChat(int chatId)
         {

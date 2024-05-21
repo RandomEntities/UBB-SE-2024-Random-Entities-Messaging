@@ -20,15 +20,15 @@ namespace MauiApp1
 
             int userId = 1;
 
-            builder.Services.AddSingleton<HttpRepository>(serviceProvider =>
+            builder.Services.AddHttpClient<ApiService>(client =>
             {
-                return new HttpRepository();
+                client.BaseAddress = new Uri("http://localhost:5086/");
             });
 
             builder.Services.AddSingleton<Service>(serviceProvider =>
             {
-                var repo = serviceProvider.GetRequiredService<HttpRepository>();
-                return new Service(repo);
+                var apiService = serviceProvider.GetRequiredService<ApiService>();
+                return new Service(apiService);
             });
 
             builder.Services.AddTransient<MainPageViewModel>(serviceProvider =>
@@ -58,9 +58,6 @@ namespace MauiApp1
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
-            // Register HttpClient.
-            builder.Services.AddHttpClient();
 
             return builder.Build();
         }

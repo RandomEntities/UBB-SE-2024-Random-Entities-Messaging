@@ -9,11 +9,11 @@ namespace MauiApp1.Model
 {
     public class Chat
     {
-        public int ChatId { get; private set; }
+        public int Id { get; private set; }
 
-        public Chat(int chatId)
+        public Chat(int id)
         {
-            this.ChatId = chatId;
+            this.Id = id;
         }
     }
 }

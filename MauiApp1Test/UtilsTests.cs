@@ -31,7 +31,7 @@ namespace MauiApp1Test
             Assert.That(actualUsers.Count, Is.EqualTo(expectedUsers.Count));
             for (int i = 0; i < expectedUsers.Count; i++)
             {
-                Assert.That(actualUsers[i].UserId, Is.EqualTo(expectedUsers[i].UserId));
+                Assert.That(actualUsers[i].UserId, Is.EqualTo(expectedUsers[i].Id));
                 Assert.That(actualUsers[i].Name, Is.EqualTo(expectedUsers[i].Name));
                 Assert.That(actualUsers[i].ProfilePhotoUrl, Is.EqualTo(expectedUsers[i].ProfilePhotoUrl));
             }
@@ -64,7 +64,7 @@ namespace MauiApp1Test
 
             for (int i = 0; i < expectedChats.Count; i++)
             {
-                Assert.That(actualChats[i].ChatId, Is.EqualTo(expectedChats[i].ChatId));
+                Assert.That(actualChats[i].Id, Is.EqualTo(expectedChats[i].Id));
                 Assert.That(actualChats[i].SenderId, Is.EqualTo(expectedChats[i].SenderId));
                 Assert.That(actualChats[i].ReceiverId, Is.EqualTo(expectedChats[i].ReceiverId));
 
