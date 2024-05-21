@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using MauiApp1.ViewModel;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace MauiApp1.Model
 {
