@@ -94,7 +94,7 @@ namespace MauiApp1.Model
             List<MessageModel> result = new List<MessageModel>();
 
             // Get all the chat messages from the database.
-            List<Message> messages = apiService.GetChatMessages(chatId);
+            List<TextMessage> messages = apiService.GetChatMessages(chatId);
             foreach (Message message in messages)
             {
                 if (message is Message)
@@ -138,8 +138,7 @@ namespace MauiApp1.Model
 
         public void AddTextMessageToChat(int chatId, int senderId, string text)
         {
-            Message message = new TextMessage(0, chatId, senderId, DateTime.Now, string.Empty, text);
-            apiService.AddMessageToChat(chatId, message);
+            apiService.AddMessageToChat(chatId, new TextMessage(0, chatId, senderId, DateTime.Now, string.Empty, text));
         }
     }
 }

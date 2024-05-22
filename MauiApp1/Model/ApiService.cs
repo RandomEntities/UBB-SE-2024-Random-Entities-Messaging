@@ -47,27 +47,22 @@ namespace MauiApp1.Model
             return response.Content.ReadFromJsonAsync<List<User>>().Result;
         }
 
-        public List<Message> GetChatMessages(int chatId)
+        public List<TextMessage> GetChatMessages(int chatId)
         {
             var response = httpClient.GetAsync($"api/chat/{chatId}/messages").Result;
             response.EnsureSuccessStatusCode();
-            return response.Content.ReadFromJsonAsync<List<Message>>().Result;
+            return response.Content.ReadFromJsonAsync<List<TextMessage>>().Result;
         }
 
-        public void AddMessage(Message message)
-        {
-            var response = httpClient.PostAsJsonAsync("api/chat", message).Result;
-            response.EnsureSuccessStatusCode();
-        }
-
-        public Message GetChatLastMessage(int chatId)
+        public TextMessage GetChatLastMessage(int chatId)
         {
             var response = httpClient.GetAsync($"api/chat/{chatId}/lastmessage").Result;
             response.EnsureSuccessStatusCode();
-            return response.Content.ReadFromJsonAsync<Message>().Result;
+            string str = response.Content.ReadAsStringAsync().Result;
+            return response.Content.ReadFromJsonAsync<TextMessage>().Result;
         }
 
-        public void AddMessageToChat(int chatId, Message message)
+        public void AddMessageToChat(int chatId, TextMessage message)
         {
             var response = httpClient.PostAsJsonAsync($"api/chat/{chatId}/addmessage", message).Result;
             response.EnsureSuccessStatusCode();
