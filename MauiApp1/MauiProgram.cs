@@ -20,18 +20,15 @@ namespace MauiApp1
 
             int userId = 1;
 
-            builder.Services.AddSingleton<Repository>(serviceProvider =>
+            builder.Services.AddHttpClient<ApiService>(client =>
             {
-                string localPath = Directory.GetParent(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)).Parent.Parent.Parent.Parent.FullName;
-                string usersFilePath = localPath + @"\Data\users.xml";
-                string chatsFilePath = localPath + @"\Data\chats.xml";
-                return new Repository(usersFilePath, chatsFilePath);
+                client.BaseAddress = new Uri("http://localhost:5086/");
             });
 
             builder.Services.AddSingleton<Service>(serviceProvider =>
             {
-                var repo = serviceProvider.GetRequiredService<Repository>();
-                return new Service(repo);
+                var apiService = serviceProvider.GetRequiredService<ApiService>();
+                return new Service(apiService);
             });
 
             builder.Services.AddTransient<MainPageViewModel>(serviceProvider =>

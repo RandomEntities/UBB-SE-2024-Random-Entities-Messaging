@@ -9,120 +9,77 @@ namespace MauiApp1.Model
 {
     public class Repository : IRepository
     {
-        private string usersFilePath;
-        private string chatsFilePath;
-        private List<User> allUsers;
-        private List<Chat> allChats;
-
-        public Repository(string usersFilePath, string chatsFilePath)
+        public Chat GetChat(int chatId)
         {
-            this.usersFilePath = usersFilePath;
-            this.chatsFilePath = chatsFilePath;
-            LoadUsersAndChats();
+            // Generate mock chat data
+            return new Chat(chatId);
         }
 
-        public void SortChatMessages(Chat chat)
+        public List<Chat> GetUserChats(int userId)
         {
-            List<Message> sortedMessages = chat.GetAllMessages().OrderBy(message => message.GetTimestamp()).ToList();
-            chat.SetMessageList(sortedMessages);
-        }
-
-        private void LoadUsersAndChats()
-        {
-            allUsers = Utils.ReadUsersFromXml(usersFilePath);
-            allChats = Utils.ReadChatsFromXml(chatsFilePath);
-            foreach (Chat c in allChats)
+            // Generate mock user chats
+            return new List<Chat>
             {
-                SortChatMessages(c);
-            }
+                new Chat(1),
+                new Chat(2),
+                new Chat(3)
+            };
         }
 
-        private void SaveChats()
+        public List<User> GetChatParticipants(int chatId)
         {
-            Utils.WriteChatsToXml(allChats, chatsFilePath);
-        }
-
-        public List<Chat> GetChatsByUser(int userId)
-        {
-            List<Chat> chats = new List<Chat>();
-            foreach (Chat chat in allChats)
+            if (chatId == 1)
             {
-                if (chat.SenderId == userId)
+                return new List<User>
                 {
-                    chats.Add(chat);
-                }
+                    new User(1, "User 1", "david.png"),
+                    new User(2, "User 2", "razvan.png")
+                };
             }
-
-            return chats;
-        }
-
-        public User? GetUser(int userId)
-        {
-            return allUsers.Find(user => user.UserId == userId);
-        }
-
-        public Chat? GetChat(int chatId)
-        {
-            return allChats.Find(chat => chat.ChatId == chatId);
-        }
-
-        public void AddMessageToChat(int chatId, Message messageToAdd)
-        {
-            Chat? chat = GetChat(chatId);
-            if (chat == null)
+            else if (chatId == 2)
             {
-                return;
-            }
-
-            int oppositeChatId = chatId % 2 == 0 ? chatId - 1 : chatId + 1;
-            Chat? oppositeChat = GetChat(oppositeChatId);
-            if (oppositeChat == null)
-            {
-                return;
-            }
-
-            int lastId = 0;
-            foreach (Message message in chat.GetAllMessages())
-            {
-                int messageId = message.GetMessageId();
-                if (messageId > lastId)
+                return new List<User>
                 {
-                    lastId = messageId;
-                }
-            }
-
-            messageToAdd.SetMessageId(lastId + 1);
-            messageToAdd.SetStatus("Sent");
-
-            Message newMessage;
-
-            if (messageToAdd is TextMessage)
-            {
-                newMessage = new TextMessage(lastId + 1, oppositeChatId, messageToAdd.GetSenderId(), messageToAdd.GetTimestamp(), "New", messageToAdd.GetMessageContent());
-            }
-            else if (messageToAdd is FileMessage)
-            {
-                newMessage = new FileMessage(lastId + 1, oppositeChatId, messageToAdd.GetSenderId(), messageToAdd.GetTimestamp(), "New", messageToAdd.GetMessageContent());
-            }
-            else if (messageToAdd is VoiceMessage)
-            {
-                newMessage = new VoiceMessage(lastId + 1, oppositeChatId, messageToAdd.GetSenderId(), messageToAdd.GetTimestamp(), "New", messageToAdd.GetMessageContent());
-            }
-            else if (messageToAdd is VideoMessage)
-            {
-                newMessage = new VideoMessage(lastId + 1, oppositeChatId, messageToAdd.GetSenderId(), messageToAdd.GetTimestamp(), "New", messageToAdd.GetMessageContent());
+                    new User(1, "User 1", "david.png"),
+                    new User(2, "User 3", "iulius.png")
+                };
             }
             else
             {
-                newMessage = new PhotoMessage(lastId + 1, oppositeChatId, messageToAdd.GetSenderId(), messageToAdd.GetTimestamp(), "New", messageToAdd.GetMessageContent());
+                return new List<User>
+                {
+                    new User(1, "User 1", "david.png"),
+                    new User(2, "User 4", "teo.png")
+                };
             }
+        }
 
-            chat.AddMessage(messageToAdd);
-            oppositeChat.AddMessage(newMessage);
-            SortChatMessages(chat);
-            SortChatMessages(oppositeChat);
+        public List<Message> GetChatMessages(int chatId)
+        {
+            // Generate mock chat messages
+            return new List<Message>
+            {
+                new TextMessage(1, chatId, 1, DateTime.Now, "Delivered", "Hello"),
+                new TextMessage(2, chatId, 2, DateTime.Now.AddMinutes(5), "Read", "Hi there")
+            };
+        }
 
-            SaveChats();
+        public void AddMessage(Message message)
+        {
+            // Add message to the chat
+            Console.WriteLine("Message added: " + message.GetMessageContent());
+        }
+
+        public Message GetChatLastMessage(int chatId)
+        {
+            // Get the last message from the chat
+            return new TextMessage(2, chatId, 2, DateTime.Now.AddMinutes(5), "Read", "Hi there");
+        }
+
+        public void AddMessageToChat(int chatId, Message message)
+        {
+            // Add message to the specified chat
+            Console.WriteLine("Message added to chat " + chatId + ": " + message.GetMessageContent());
         }
     }
 }

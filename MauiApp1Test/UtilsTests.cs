@@ -19,21 +19,21 @@ namespace MauiApp1Test
                 new User(2, "Alice Smith", "/path/to/profile2.jpg"),
                 new User(3, "Bob Johnson", "/path/to/profile3.jpg")
             };
-            Utils.WriteUserToXml(expectedUsers[0], testFilePath);
-            Utils.WriteUserToXmlAppending(expectedUsers[1], testFilePath);
-            Utils.WriteUserToXmlAppending(expectedUsers[2], testFilePath);
+            MauiApp1.Model.Extensions.WriteUserToXml(expectedUsers[0], testFilePath);
+            MauiApp1.Model.Extensions.WriteUserToXmlAppending(expectedUsers[1], testFilePath);
+            MauiApp1.Model.Extensions.WriteUserToXmlAppending(expectedUsers[2], testFilePath);
 
             // Act
-            var actualUsers = Utils.ReadUsersFromXml(testFilePath);
+            var actualUsers = MauiApp1.Model.Extensions.ReadUsersFromXml(testFilePath);
 
             // Assert
             Assert.That(actualUsers, Is.Not.Null);
             Assert.That(actualUsers.Count, Is.EqualTo(expectedUsers.Count));
             for (int i = 0; i < expectedUsers.Count; i++)
             {
-                Assert.That(actualUsers[i].UserId, Is.EqualTo(expectedUsers[i].UserId));
+                Assert.That(actualUsers[i].UserId, Is.EqualTo(expectedUsers[i].Id));
                 Assert.That(actualUsers[i].Name, Is.EqualTo(expectedUsers[i].Name));
-                Assert.That(actualUsers[i].ProfilePhotoPath, Is.EqualTo(expectedUsers[i].ProfilePhotoPath));
+                Assert.That(actualUsers[i].ProfilePhotoUrl, Is.EqualTo(expectedUsers[i].ProfilePhotoUrl));
             }
 
             // Clean up
@@ -55,16 +55,16 @@ namespace MauiApp1Test
             expectedChats[1].AddMessage(new TextMessage(3, 2, 3, DateTime.Now, "Delivered", "Hey Bob!"));
             expectedChats[1].AddMessage(new TextMessage(4, 2, 3, DateTime.Now, "Read", "I'm good, thanks!"));
 
-            Utils.WriteChatsToXml(expectedChats, testFilePath);
+            MauiApp1.Model.Extensions.WriteChatsToXml(expectedChats, testFilePath);
 
-            List<Chat> actualChats = Utils.ReadChatsFromXml(testFilePath);
+            List<Chat> actualChats = MauiApp1.Model.Extensions.ReadChatsFromXml(testFilePath);
 
             Assert.That(actualChats, Is.Not.Null);
             Assert.That(actualChats.Count, Is.EqualTo(expectedChats.Count));
 
             for (int i = 0; i < expectedChats.Count; i++)
             {
-                Assert.That(actualChats[i].ChatId, Is.EqualTo(expectedChats[i].ChatId));
+                Assert.That(actualChats[i].Id, Is.EqualTo(expectedChats[i].Id));
                 Assert.That(actualChats[i].SenderId, Is.EqualTo(expectedChats[i].SenderId));
                 Assert.That(actualChats[i].ReceiverId, Is.EqualTo(expectedChats[i].ReceiverId));
 
@@ -95,7 +95,7 @@ namespace MauiApp1Test
             User user = new User(1, "John Doe", "/path/to/profile1.jpg");
 
             // Act
-            Utils.WriteUserToXml(user, filePath);
+            MauiApp1.Model.Extensions.WriteUserToXml(user, filePath);
 
             // Assert
             Assert.That(File.Exists(filePath), Is.True, "File should exist after writing user data.");
@@ -112,7 +112,7 @@ namespace MauiApp1Test
             User user = new User(2, "Alice Smith", "/path/to/profile2.jpg");
 
             // Act
-            Utils.WriteUserToXmlAppending(user, filePath);
+            MauiApp1.Model.Extensions.WriteUserToXmlAppending(user, filePath);
 
             // Assert
             Assert.That(File.Exists(filePath), Is.True, "File should exist after appending user data.");
@@ -131,7 +131,7 @@ namespace MauiApp1Test
             chats.Add(chat);
 
             // Act
-            Utils.WriteChatsToXml(chats, filePath);
+            MauiApp1.Model.Extensions.WriteChatsToXml(chats, filePath);
 
             // Assert
             Assert.That(File.Exists(filePath), Is.True, "File should exist after writing chat data.");
@@ -148,8 +148,8 @@ namespace MauiApp1Test
             int secondNumber = 12;
 
             // Arrange
-            string firstResult = Utils.ToStringWithLeadingZero(firstNumber);
-            string secondResult = Utils.ToStringWithLeadingZero(secondNumber);
+            string firstResult = MauiApp1.Model.Extensions.ToStringWithLeadingZero(firstNumber);
+            string secondResult = MauiApp1.Model.Extensions.ToStringWithLeadingZero(secondNumber);
 
             // Assert
             Assert.That(firstResult, Is.EqualTo("05"));
